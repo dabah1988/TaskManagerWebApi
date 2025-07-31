@@ -1,0 +1,20 @@
+{
+  "Version": 1,
+  "Hash": "9fvQ90fP1UXhokqfK6FhI1xmmTJtIZdP7osI0u1DnnY=",
+  "Source": "TaskManager.UI",
+  "BasePath": "_content/TaskManager.UI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "TaskManager.UI\\wwwroot",
+      "Source": "TaskManager.UI",
+      "ContentRoot": "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManager.UI\\wwwroot\\",
+      "BasePath": "_content/TaskManager.UI",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [],
+  "Endpoints": []
+}

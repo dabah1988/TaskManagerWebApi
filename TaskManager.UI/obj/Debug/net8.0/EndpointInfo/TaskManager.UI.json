@@ -1,0 +1,85 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "TaskManager.UI",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/TaskManager": {
+      "get": {
+        "tags": [
+          "TaskManager"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Project"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Project"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Project"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Project": {
+        "required": [
+          "dateOfStart",
+          "projectDescription",
+          "projectName",
+          "teamSize"
+        ],
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "projectName": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string"
+          },
+          "projectDescription": {
+            "maxLength": 500,
+            "minLength": 1,
+            "type": "string"
+          },
+          "dateOfStart": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "teamSize": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

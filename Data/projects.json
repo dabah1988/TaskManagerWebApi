@@ -1,0 +1,72 @@
+[
+  {
+    "ProjectId": "d8f1e128-1d1d-4f53-a8cc-bd79217b2a05",
+    "ProjectName": "Migration Cloud Azure",
+    "ProjectDescription": "Migration complète de l'infrastructure vers Azure avec automatisation CI/CD.",
+    "DateOfStart": "2023-01-15T00:00:00",
+    "TeamSize": 6
+  },
+  {
+    "ProjectId": "1a12e199-b289-4d38-961e-12345876abcd",
+    "ProjectName": "Application RH Mobile",
+    "ProjectDescription": "Développement d'une application mobile pour la gestion RH en interne.",
+    "DateOfStart": "2022-11-10T00:00:00",
+    "TeamSize": 4
+  },
+  {
+    "ProjectId": "34cd5c45-0f7a-4f1c-8ee9-98765432abcd",
+    "ProjectName": "Refonte e-commerce",
+    "ProjectDescription": "Refonte complète de la plateforme e-commerce avec Angular et .NET Core.",
+    "DateOfStart": "2024-03-01T00:00:00",
+    "TeamSize": 8
+  },
+  {
+    "ProjectId": "a341f66b-98cb-40b7-a6a2-90f3b33cf010",
+    "ProjectName": "API géolocalisation",
+    "ProjectDescription": "Création d'une API pour la cartographie des utilisateurs à l'international.",
+    "DateOfStart": "2024-06-12T00:00:00",
+    "TeamSize": 3
+  },
+  {
+    "ProjectId": "e109eabc-12aa-42ff-9090-aba123aa3456",
+    "ProjectName": "Monitoring industriel",
+    "ProjectDescription": "Développement d'une solution IoT pour surveiller les machines en temps réel.",
+    "DateOfStart": "2023-09-21T00:00:00",
+    "TeamSize": 5
+  },
+  {
+    "ProjectId": "fda43c8b-c503-4f5b-81e1-1098ae01bcde",
+    "ProjectName": "Outil CRM sur mesure",
+    "ProjectDescription": "Développement d’un outil CRM adapté aux besoins d’un client BTP.",
+    "DateOfStart": "2022-07-01T00:00:00",
+    "TeamSize": 7
+  },
+  {
+    "ProjectId": "bd123c8a-9832-4ed8-a1b5-7ab32ca45678",
+    "ProjectName": "Système de réservation",
+    "ProjectDescription": "Plateforme de réservation multilingue pour des services médicaux.",
+    "DateOfStart": "2023-02-14T00:00:00",
+    "TeamSize": 4
+  },
+  {
+    "ProjectId": "9be8f999-cccd-44d7-a4f1-5eaa87654321",
+    "ProjectName": "Analyse Big Data",
+    "ProjectDescription": "Projet de traitement de gros volumes de données clients pour recommandations.",
+    "DateOfStart": "2024-05-20T00:00:00",
+    "TeamSize": 9
+  },
+  {
+    "ProjectId": "2c34e0d9-21dd-4f8c-bb6a-b7fdfabcd123",
+    "ProjectName": "Bot de recrutement",
+    "ProjectDescription": "Mise en place d’un chatbot IA pour le recrutement automatique sur LinkedIn.",
+    "DateOfStart": "2023-10-05T00:00:00",
+    "TeamSize": 2
+  },
+  {
+    "ProjectId": "889fa0a1-435f-42b0-b254-cccdeedc0001",
+    "ProjectName": "Dashboard analytique",
+    "ProjectDescription": "Développement d’un tableau de bord interactif avec Power BI et Blazor.",
+    "DateOfStart": "2024-01-25T00:00:00",
+    "TeamSize": 6
+  }
+]
