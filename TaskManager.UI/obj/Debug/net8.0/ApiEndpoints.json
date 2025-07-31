@@ -18,5 +18,58 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "WebApiTaskManager.Controllers.TaskManagerController",
+    "Method": "AddProject",
+    "RelativePath": "api/TaskManager",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "projectAddRequest",
+        "Type": "TaskManager.Core.DTO.ProjectAddRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApiTaskManager.Controllers.TaskManagerController",
+    "Method": "DeleteProject",
+    "RelativePath": "api/TaskManager/{projectId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "projectId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApiTaskManager.Controllers.TaskManagerController",
+    "Method": "UpdateProject",
+    "RelativePath": "api/TaskManager/{projectId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "projectForUpdate",
+        "Type": "WebApiTaskManager.Core.Domain.Entities.Project",
+        "IsRequired": true
+      },
+      {
+        "Name": "projectId",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using AutoMapper;
+using Microsoft.Extensions.Logging;
 using TaskManager.Core.Domain.RepositoryContracts;
 using TaskManager.Core.DTO;
 using TaskManager.Core.ServicesContract;
@@ -10,23 +11,27 @@ namespace TaskManager.Core.Services
     {
         private readonly ITaskManagerRepository _taskManagerRepository;
         private readonly ILogger<TaskManagerService> _logger;
+        private readonly IMapper _mapper;
         public TaskManagerService(
             ITaskManagerRepository taskManagerRepository,
-            ILogger<TaskManagerService> logger
+            ILogger<TaskManagerService> logger,
+            IMapper mapper
             )
         {
             _taskManagerRepository = taskManagerRepository;
             _logger = logger;
+            _mapper = mapper;
         }
-        public async Task<ProjectResponse> AddProjectAsync(Project project)
+        public async Task<ProjectResponse> AddProject(ProjectAddRequest projectAddRequest)
         {
             try
             {
-                if (project == null)
+                if (projectAddRequest == null)
                 {
-                    _logger.LogError("{project} is null", project);
+                    _logger.LogError("{project} is null", projectAddRequest);
                     throw new ArgumentNullException($"{{projectId}} is null");
                 }
+                var project = _mapper.Map<Project>( projectAddRequest );
               ProjectResponse productResponse = (await  
                     _taskManagerRepository.AddProjectAsync(project));  
                 return productResponse;
@@ -38,9 +43,20 @@ namespace TaskManager.Core.Services
             }
         }
 
-        public Task DeleteAsync(Guid projectId)
+        public async Task DeleteAsync(Guid projectId)
         {
-            throw new NotImplementedException();
+            if (projectId == Guid.Empty)
+            {
+                _logger.LogError("{projectid} is null", projectId);
+                throw new ArgumentNullException($"{{projectId}} is null");
+            }
+            Project? project = await _taskManagerRepository.GetProjectByIdAsync(projectId);
+            if (project == null)
+            {
+                _logger.LogError("{project} is null", project);
+                throw new ArgumentNullException($"{{projectId}} is null");
+            }
+            await _taskManagerRepository.DeleteProjectAsync(projectId);
         }
 
         public async Task<List<Project>> GetAllProjects()

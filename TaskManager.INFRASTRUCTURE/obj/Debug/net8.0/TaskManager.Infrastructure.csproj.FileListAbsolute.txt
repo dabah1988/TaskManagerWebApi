@@ -32,3 +32,4 @@ D:\COURS_APPRENTISSAGE_SHARP\LEARN_ANGULAR\API\TaskManager\TaskManager.INFRASTRU
 D:\COURS_APPRENTISSAGE_SHARP\LEARN_ANGULAR\API\TaskManager\TaskManager.INFRASTRUCTURE\obj\Debug\net8.0\TaskManager.Infrastructure.pdb
 D:\COURS_APPRENTISSAGE_SHARP\LEARN_ANGULAR\API\TaskManager\TaskManager.INFRASTRUCTURE\obj\Debug\net8.0\TaskManager.Infrastructure.genruntimeconfig.cache
 D:\COURS_APPRENTISSAGE_SHARP\LEARN_ANGULAR\API\TaskManager\TaskManager.INFRASTRUCTURE\obj\Debug\net8.0\ref\TaskManager.Infrastructure.dll
+D:\COURS_APPRENTISSAGE_SHARP\LEARN_ANGULAR\API\TaskManager\TaskManager.INFRASTRUCTURE\obj\Debug\net8.0\TaskManager.Infrastructure.sourcelink.json

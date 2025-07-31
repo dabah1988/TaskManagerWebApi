@@ -32,7 +32,6 @@ namespace WebApiTaskManager
                 builder.Services.AddEndpointsApiExplorer();
                 builder.Services.AddSwaggerGen();
                 builder.Services.AddInfrastructure(builder.Configuration);
-                Log.Information("Fin de AddInfrastructure");
                 var app = builder.Build();
 
                 //Configure the HTTP request pipeline.

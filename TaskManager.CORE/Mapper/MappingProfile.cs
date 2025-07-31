@@ -9,6 +9,7 @@ namespace TaskManager.Core.Mapper
         public MappingProfile()
         {
             CreateMap<Project, ProjectResponse>();
+            CreateMap<ProjectAddRequest, Project>();
         }
     }
 }

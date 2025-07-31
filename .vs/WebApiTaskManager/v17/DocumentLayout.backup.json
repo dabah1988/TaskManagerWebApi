@@ -3,8 +3,36 @@
   "WorkspaceRootPath": "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DF703ADC-7C37-4FE6-A444-B08CFAC38121}|TaskManagerTests\\TaskManagerTests.csproj|d:\\cours_apprentissage_sharp\\learn_angular\\api\\taskmanager\\taskmanagertests\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF703ADC-7C37-4FE6-A444-B08CFAC38121}|TaskManagerTests\\TaskManagerTests.csproj|solutionrelative:taskmanagertests\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{43F0E4EC-E972-40FB-818D-89B16BA58661}|TaskManager.UI\\TaskManager.UI.csproj|d:\\cours_apprentissage_sharp\\learn_angular\\api\\taskmanager\\taskmanager.ui\\controllers\\taskmanagercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{43F0E4EC-E972-40FB-818D-89B16BA58661}|TaskManager.UI\\TaskManager.UI.csproj|solutionrelative:taskmanager.ui\\controllers\\taskmanagercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C39139DF-187F-41FB-BF8D-1BE33A330C7E}|TaskManager.CORE\\TaskManager.Core.csproj|d:\\cours_apprentissage_sharp\\learn_angular\\api\\taskmanager\\taskmanager.core\\services\\taskmanagerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C39139DF-187F-41FB-BF8D-1BE33A330C7E}|TaskManager.CORE\\TaskManager.Core.csproj|solutionrelative:taskmanager.core\\services\\taskmanagerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{43F0E4EC-E972-40FB-818D-89B16BA58661}|TaskManager.UI\\TaskManager.UI.csproj|d:\\cours_apprentissage_sharp\\learn_angular\\api\\taskmanager\\taskmanager.ui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{43F0E4EC-E972-40FB-818D-89B16BA58661}|TaskManager.UI\\TaskManager.UI.csproj|solutionrelative:taskmanager.ui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{51676A9B-D3AE-4C67-B303-9A8FD7362BC4}|TaskManager.INFRASTRUCTURE\\TaskManager.Infrastructure.csproj|d:\\cours_apprentissage_sharp\\learn_angular\\api\\taskmanager\\taskmanager.infrastructure\\repository\\taskmanagerrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{51676A9B-D3AE-4C67-B303-9A8FD7362BC4}|TaskManager.INFRASTRUCTURE\\TaskManager.Infrastructure.csproj|solutionrelative:taskmanager.infrastructure\\repository\\taskmanagerrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C39139DF-187F-41FB-BF8D-1BE33A330C7E}|TaskManager.CORE\\TaskManager.Core.csproj|d:\\cours_apprentissage_sharp\\learn_angular\\api\\taskmanager\\taskmanager.core\\mapper\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C39139DF-187F-41FB-BF8D-1BE33A330C7E}|TaskManager.CORE\\TaskManager.Core.csproj|solutionrelative:taskmanager.core\\mapper\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C39139DF-187F-41FB-BF8D-1BE33A330C7E}|TaskManager.CORE\\TaskManager.Core.csproj|d:\\cours_apprentissage_sharp\\learn_angular\\api\\taskmanager\\taskmanager.core\\servicescontract\\itaskmanagerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C39139DF-187F-41FB-BF8D-1BE33A330C7E}|TaskManager.CORE\\TaskManager.Core.csproj|solutionrelative:taskmanager.core\\servicescontract\\itaskmanagerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF703ADC-7C37-4FE6-A444-B08CFAC38121}|TaskManagerTests\\TaskManagerTests.csproj|d:\\cours_apprentissage_sharp\\learn_angular\\api\\taskmanager\\taskmanagertests\\projecttests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF703ADC-7C37-4FE6-A444-B08CFAC38121}|TaskManagerTests\\TaskManagerTests.csproj|solutionrelative:taskmanagertests\\projecttests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C39139DF-187F-41FB-BF8D-1BE33A330C7E}|TaskManager.CORE\\TaskManager.Core.csproj|d:\\cours_apprentissage_sharp\\learn_angular\\api\\taskmanager\\taskmanager.core\\dto\\projectaddrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C39139DF-187F-41FB-BF8D-1BE33A330C7E}|TaskManager.CORE\\TaskManager.Core.csproj|solutionrelative:taskmanager.core\\dto\\projectaddrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 11,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,15 +78,106 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UnitTest1.cs",
-              "DocumentMoniker": "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManagerTests\\UnitTest1.cs",
-              "RelativeDocumentMoniker": "TaskManagerTests\\UnitTest1.cs",
-              "ToolTip": "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManagerTests\\UnitTest1.cs",
-              "RelativeToolTip": "TaskManagerTests\\UnitTest1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAApAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "MappingProfile.cs",
+              "DocumentMoniker": "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManager.CORE\\Mapper\\MappingProfile.cs",
+              "RelativeDocumentMoniker": "TaskManager.CORE\\Mapper\\MappingProfile.cs",
+              "ToolTip": "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManager.CORE\\Mapper\\MappingProfile.cs",
+              "RelativeToolTip": "TaskManager.CORE\\Mapper\\MappingProfile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-31T20:39:44.686Z",
+              "WhenOpened": "2025-07-31T21:37:51.22Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TaskManagerRepository.cs",
+              "DocumentMoniker": "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManager.INFRASTRUCTURE\\Repository\\TaskManagerRepository.cs",
+              "RelativeDocumentMoniker": "TaskManager.INFRASTRUCTURE\\Repository\\TaskManagerRepository.cs",
+              "ToolTip": "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManager.INFRASTRUCTURE\\Repository\\TaskManagerRepository.cs",
+              "RelativeToolTip": "TaskManager.INFRASTRUCTURE\\Repository\\TaskManagerRepository.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAgwCUAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-31T21:33:40.574Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TaskManagerService.cs",
+              "DocumentMoniker": "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManager.CORE\\Services\\TaskManagerService.cs",
+              "RelativeDocumentMoniker": "TaskManager.CORE\\Services\\TaskManagerService.cs",
+              "ToolTip": "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManager.CORE\\Services\\TaskManagerService.cs",
+              "RelativeToolTip": "TaskManager.CORE\\Services\\TaskManagerService.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAowDMAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-31T21:31:38.829Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TaskManagerController.cs",
+              "DocumentMoniker": "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManager.UI\\Controllers\\TaskManagerController.cs",
+              "RelativeDocumentMoniker": "TaskManager.UI\\Controllers\\TaskManagerController.cs",
+              "ToolTip": "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManager.UI\\Controllers\\TaskManagerController.cs",
+              "RelativeToolTip": "TaskManager.UI\\Controllers\\TaskManagerController.cs",
+              "ViewState": "AgIAAF0AAAAAAAAAAADwv10AAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-31T21:14:31.664Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ITaskManagerService.cs",
+              "DocumentMoniker": "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManager.CORE\\ServicesContract\\ITaskManagerService.cs",
+              "RelativeDocumentMoniker": "TaskManager.CORE\\ServicesContract\\ITaskManagerService.cs",
+              "ToolTip": "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManager.CORE\\ServicesContract\\ITaskManagerService.cs",
+              "RelativeToolTip": "TaskManager.CORE\\ServicesContract\\ITaskManagerService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-31T21:38:53.709Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManager.UI\\Program.cs",
+              "RelativeDocumentMoniker": "TaskManager.UI\\Program.cs",
+              "ToolTip": "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManager.UI\\Program.cs",
+              "RelativeToolTip": "TaskManager.UI\\Program.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAgwCEAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-31T21:56:37.451Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ProjectAddRequest.cs",
+              "DocumentMoniker": "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManager.CORE\\DTO\\ProjectAddRequest.cs",
+              "RelativeDocumentMoniker": "TaskManager.CORE\\DTO\\ProjectAddRequest.cs",
+              "ToolTip": "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManager.CORE\\DTO\\ProjectAddRequest.cs",
+              "RelativeToolTip": "TaskManager.CORE\\DTO\\ProjectAddRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-31T21:20:08.456Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ProjectTests.cs",
+              "DocumentMoniker": "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManagerTests\\ProjectTests.cs",
+              "RelativeDocumentMoniker": "TaskManagerTests\\ProjectTests.cs",
+              "ToolTip": "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManagerTests\\ProjectTests.cs",
+              "RelativeToolTip": "TaskManagerTests\\ProjectTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-31T21:13:31.649Z",
               "EditorCaption": ""
             }
           ]

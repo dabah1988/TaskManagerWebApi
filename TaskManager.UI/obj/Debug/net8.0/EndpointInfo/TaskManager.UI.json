@@ -41,6 +41,97 @@
             }
           }
         }
+      },
+      "post": {
+        "tags": [
+          "TaskManager"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectAddRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectAddRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectAddRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/TaskManager/{projectId}": {
+      "delete": {
+        "tags": [
+          "TaskManager"
+        ],
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "TaskManager"
+        ],
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Project"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Project"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Project"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     }
   },
@@ -72,6 +163,29 @@
           "dateOfStart": {
             "type": "string",
             "format": "date-time"
+          },
+          "teamSize": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProjectAddRequest": {
+        "type": "object",
+        "properties": {
+          "projectName": {
+            "type": "string",
+            "nullable": true
+          },
+          "projectDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateOfStart": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "teamSize": {
             "type": "integer",

@@ -22,3 +22,4 @@ D:\COURS_APPRENTISSAGE_SHARP\LEARN_ANGULAR\API\TaskManager\TaskManager.CORE\obj\
 D:\COURS_APPRENTISSAGE_SHARP\LEARN_ANGULAR\API\TaskManager\TaskManager.CORE\obj\Debug\net8.0\refint\TaskManager.Core.dll
 D:\COURS_APPRENTISSAGE_SHARP\LEARN_ANGULAR\API\TaskManager\TaskManager.CORE\obj\Debug\net8.0\TaskManager.Core.pdb
 D:\COURS_APPRENTISSAGE_SHARP\LEARN_ANGULAR\API\TaskManager\TaskManager.CORE\obj\Debug\net8.0\ref\TaskManager.Core.dll
+D:\COURS_APPRENTISSAGE_SHARP\LEARN_ANGULAR\API\TaskManager\TaskManager.CORE\obj\Debug\net8.0\TaskManager.Core.sourcelink.json

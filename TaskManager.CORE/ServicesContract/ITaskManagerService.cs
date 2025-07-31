@@ -12,7 +12,7 @@ namespace TaskManager.Core.ServicesContract
     {
         Task<Project?> GetProjectByid(Guid projectId);
         Task<List<Project>> GetAllProjects();
-        Task<ProjectResponse> AddProjectAsync(Project project);
+        Task<ProjectResponse> AddProject(ProjectAddRequest projectAddRequest);
         Task UpdateAsync(Project project);
         Task DeleteAsync(Guid projectId);
     }
