@@ -84,9 +84,17 @@ namespace WebApiTaskManager.Controllers
                     return BadRequest("Projet null");
                 }
                 Project? project = await _serviceTaskManager.GetProjectByid(projectId);
-                  await _serviceTaskManager.DeleteAsync(projectId);
-                if(project == null)return NotFound();
-                return Ok(project);
+                if (project == null)           return NotFound();
+           
+                
+               bool result = await _serviceTaskManager.DeleteAsync(projectId);
+                if(result)   return Ok(project);
+                else
+                {
+                    _logger.LogError("La suppresson projet {project} a échoué", project);
+                    return StatusCode(500, "La suppression du projet a échoué.");
+                }
+
             }
             catch (Exception ex)
             {
@@ -105,8 +113,13 @@ namespace WebApiTaskManager.Controllers
                     _logger.LogWarning("{project} Le projet envoyé is null.", projectForUpdate);
                     return BadRequest("Projet null");
                 }
-                 await _serviceTaskManager.UpdateAsync(projectForUpdate);
-                return Ok(projectForUpdate);
+                bool result =  await _serviceTaskManager.UpdateAsync(projectForUpdate);
+                if (result) return Ok(projectForUpdate);
+                else
+                {
+                    _logger.LogError("La mise à jour du projet {project} a échoué", projectForUpdate);
+                    return StatusCode(500, "La mise à jour du projet a échoué.");
+                }
             }
             catch (Exception ex)
             {

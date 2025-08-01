@@ -51,7 +51,7 @@ namespace TaskManager.Infrastructure.Repository
             }
         }
 
-        public async Task DeleteProjectAsync(Guid projectId)
+        public async Task<bool> DeleteProjectAsync(Guid projectId)
         {
             try
             {
@@ -76,6 +76,7 @@ namespace TaskManager.Infrastructure.Repository
                     throw new Exception("La suppression n'a pas pu être effectuée.");
                 }
                 _logger.LogInformation("Projet supprimé avec succès : {projectId}", projectId);
+                return affectedRows > 0;
             }
             catch (Exception ex)
             {
@@ -122,7 +123,7 @@ namespace TaskManager.Infrastructure.Repository
             }
         }
 
-        public async Task UpdateProjectAsync(Project projectToUpdate)
+        public async Task<bool> UpdateProjectAsync(Project projectToUpdate)
         {
             try
             {
@@ -141,7 +142,8 @@ namespace TaskManager.Infrastructure.Repository
                 project.DateOfStart = projectToUpdate.DateOfStart;
                 project.TeamSize = projectToUpdate.TeamSize;
                 project.ProjectDescription = projectToUpdate.ProjectDescription;
-                _dbContext.SaveChanges();
+                int result = _dbContext.SaveChanges();
+                return result > 0;
             }
             catch (Exception ex)
             {

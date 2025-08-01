@@ -427,6 +427,7 @@ D:\COURS_APPRENTISSAGE_SHARP\LEARN_ANGULAR\API\TaskManager\TaskManager.UI\obj\De
 D:\COURS_APPRENTISSAGE_SHARP\LEARN_ANGULAR\API\TaskManager\TaskManager.UI\obj\Debug\net8.0\TaskManager.UI.csproj.CoreCompileInputs.cache
 D:\COURS_APPRENTISSAGE_SHARP\LEARN_ANGULAR\API\TaskManager\TaskManager.UI\obj\Debug\net8.0\TaskManager.UI.MvcApplicationPartsAssemblyInfo.cs
 D:\COURS_APPRENTISSAGE_SHARP\LEARN_ANGULAR\API\TaskManager\TaskManager.UI\obj\Debug\net8.0\TaskManager.UI.MvcApplicationPartsAssemblyInfo.cache
+D:\COURS_APPRENTISSAGE_SHARP\LEARN_ANGULAR\API\TaskManager\TaskManager.UI\obj\Debug\net8.0\TaskManager.UI.sourcelink.json
 D:\COURS_APPRENTISSAGE_SHARP\LEARN_ANGULAR\API\TaskManager\TaskManager.UI\obj\Debug\net8.0\scopedcss\bundle\TaskManager.UI.styles.css
 D:\COURS_APPRENTISSAGE_SHARP\LEARN_ANGULAR\API\TaskManager\TaskManager.UI\obj\Debug\net8.0\staticwebassets.build.json
 D:\COURS_APPRENTISSAGE_SHARP\LEARN_ANGULAR\API\TaskManager\TaskManager.UI\obj\Debug\net8.0\staticwebassets.development.json
@@ -444,4 +445,3 @@ D:\COURS_APPRENTISSAGE_SHARP\LEARN_ANGULAR\API\TaskManager\TaskManager.UI\obj\De
 D:\COURS_APPRENTISSAGE_SHARP\LEARN_ANGULAR\API\TaskManager\TaskManager.UI\obj\Debug\net8.0\TaskManager.UI.pdb
 D:\COURS_APPRENTISSAGE_SHARP\LEARN_ANGULAR\API\TaskManager\TaskManager.UI\obj\Debug\net8.0\TaskManager.UI.genruntimeconfig.cache
 D:\COURS_APPRENTISSAGE_SHARP\LEARN_ANGULAR\API\TaskManager\TaskManager.UI\obj\Debug\net8.0\ref\TaskManager.UI.dll
-D:\COURS_APPRENTISSAGE_SHARP\LEARN_ANGULAR\API\TaskManager\TaskManager.UI\obj\Debug\net8.0\TaskManager.UI.sourcelink.json

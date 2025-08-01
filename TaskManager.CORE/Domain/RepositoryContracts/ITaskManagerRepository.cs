@@ -13,7 +13,7 @@ namespace TaskManager.Core.Domain.RepositoryContracts
         Task<Project?> GetProjectByIdAsync(Guid id);
         Task<List<Project>> GetAllProjectsAsync();
         Task<ProjectResponse> AddProjectAsync(Project project);
-        Task UpdateProjectAsync(Project project);
-        Task DeleteProjectAsync(Guid projectId);
+        Task<bool> UpdateProjectAsync(Project project);
+        Task<bool> DeleteProjectAsync(Guid projectId);
     }
 }

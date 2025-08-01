@@ -10,6 +10,7 @@ namespace TaskManager.Core.Mapper
         {
             CreateMap<Project, ProjectResponse>();
             CreateMap<ProjectAddRequest, Project>();
+            CreateMap<ProjectAddRequest,ProjectResponse>();
         }
     }
 }

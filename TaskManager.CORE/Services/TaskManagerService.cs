@@ -31,9 +31,19 @@ namespace TaskManager.Core.Services
                     _logger.LogError("{project} is null", projectAddRequest);
                     throw new ArgumentNullException($"{{projectId}} is null");
                 }
+                if ( string.IsNullOrWhiteSpace(projectAddRequest.ProjectName) )
+                {
+                    _logger.LogError("{projectname} is null or empty", projectAddRequest.ProjectName);
+                    throw new ArgumentNullException($"{{projectname}} is null or empty", projectAddRequest.ProjectName);
+                }
+                if ( projectAddRequest.TeamSize <= 0)
+                {
+                    _logger.LogError("{projectAddRequest.TeamSize} ne peut être inférieur ou égal 0", projectAddRequest.TeamSize);
+                    throw new ArgumentException($"{projectAddRequest.TeamSize} ne peut être inférieu ou égal à 0", projectAddRequest.TeamSize.ToString());                   
+                }
+
                 var project = _mapper.Map<Project>( projectAddRequest );
-              ProjectResponse productResponse = (await  
-                    _taskManagerRepository.AddProjectAsync(project));  
+                ProjectResponse productResponse = (await  _taskManagerRepository.AddProjectAsync(project));  
                 return productResponse;
             }
             catch (Exception ex)
@@ -43,7 +53,7 @@ namespace TaskManager.Core.Services
             }
         }
 
-        public async Task DeleteAsync(Guid projectId)
+        public async Task<bool> DeleteAsync(Guid projectId)
         {
             if (projectId == Guid.Empty)
             {
@@ -56,7 +66,8 @@ namespace TaskManager.Core.Services
                 _logger.LogError("{project} is null", project);
                 throw new ArgumentNullException($"{{projectId}} is null");
             }
-            await _taskManagerRepository.DeleteProjectAsync(projectId);
+            bool result = await _taskManagerRepository.DeleteProjectAsync(projectId);
+            return result;
         }
 
         public async Task<List<Project>> GetAllProjects()
@@ -64,7 +75,13 @@ namespace TaskManager.Core.Services
             try
             {
                 _logger.LogInformation("Récupération de tous les projets depuis la base de données.");
-                return (await _taskManagerRepository.GetAllProjectsAsync());
+                var projects= await _taskManagerRepository.GetAllProjectsAsync();
+                if(projects == null || !projects.Any())
+                {
+                    _logger.LogError("database project is null {projects}", projects);
+                    throw new ArgumentNullException("database project is null ");
+                }
+                return projects  ;
             }
             catch (Exception ex)
             {
@@ -96,9 +113,23 @@ namespace TaskManager.Core.Services
             }
         }
 
-        public Task UpdateAsync(Project project)
+        public async Task<bool> UpdateAsync(Project projectToUpdate)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (projectToUpdate == null)
+                {
+                    _logger.LogError("{project} is null", projectToUpdate);
+                    throw new ArgumentNullException($"{{projectId}} is empty");
+                }
+                bool result = await _taskManagerRepository.UpdateProjectAsync(projectToUpdate);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Erreur lors de la récupération des projets.");
+                throw;
+            }
         }
     }
 }
