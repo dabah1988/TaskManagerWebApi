@@ -11,12 +11,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("WebApiTaskManager.Application")]
-[assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("TaskManager.UI")]
+[assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+542937b334b6d38ee7a5d15447fd0e2e16cdd603")]
-[assembly: System.Reflection.AssemblyProductAttribute("WebApiTaskManager.Application")]
-[assembly: System.Reflection.AssemblyTitleAttribute("WebApiTaskManager.Application")]
+[assembly: System.Reflection.AssemblyProductAttribute("TaskManager.UI")]
+[assembly: System.Reflection.AssemblyTitleAttribute("TaskManager.UI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Généré par la classe MSBuild WriteCodeFragment.
