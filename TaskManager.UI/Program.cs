@@ -12,8 +12,22 @@ namespace WebApiTaskManager
             try
             {
                 var builder = WebApplication.CreateBuilder(args);
+                var angularUrl = builder.Configuration["AngularClient:Url"];
+                if (!string.IsNullOrWhiteSpace(angularUrl))
+                {
+                    builder.Services.AddCors(options =>
+                    {
+                        options.AddPolicy("AllowAngularDev",
+                            policy =>
+                            {
+                                policy.WithOrigins(angularUrl) // l’URL de ton Angular
+                                      .AllowAnyHeader()
+                                      .AllowAnyMethod();
+                            });
+                    });
+                }
 
-   
+
 
                 // Récupérer la configuration complète
                 var configuration = builder.Configuration;
@@ -43,6 +57,9 @@ namespace WebApiTaskManager
 
                 app.UseStaticFiles();
                 app.UseHttpsRedirection();
+
+                // Appliquer la politique CORS avant l'authorization
+                app.UseCors("AllowAngularDev");
 
                 app.UseAuthorization();
 

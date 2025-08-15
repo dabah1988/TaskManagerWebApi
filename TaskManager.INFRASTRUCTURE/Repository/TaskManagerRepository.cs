@@ -129,7 +129,7 @@ namespace TaskManager.Infrastructure.Repository
             {
                 if (projectToUpdate == null)
                 {
-                    _logger.LogError(" {project} is null", projectToUpdate);
+                    _logger.LogError(" {@project} is null", projectToUpdate);
                     throw new ArgumentNullException($" {nameof(projectToUpdate)} is null ");
                 }
                 Project? project = await _dbContext.Projects!.FirstOrDefaultAsync(x => x.ProjectId == projectToUpdate.ProjectId);

@@ -1,0 +1,54 @@
+# ============================
+# Visual Studio / .NET
+# ============================
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build output
+bin/
+obj/
+Debug/
+Release/
+
+# ASP.NET Core generated files
+wwwroot/lib/
+GeneratedFiles/
+launchSettings.json
+
+# ============================
+# Angular / Node.js
+# ============================
+node_modules/
+dist/
+tmp/
+temp/
+
+# Environment files
+src/environments/environment*.ts
+
+# Angular build cache
+.angular/
+
+# ============================
+# Logs & Temp files
+# ============================
+*.log
+*.vsidx
+*.njsproj
+*.tmp
+*.temp
+*.swp
+*.DS_Store
+Thumbs.db
+
+# ============================
+# IDE Settings
+# ============================
+.idea/
+*.iml
+
+# ============================
+# OS-spec

@@ -26,6 +26,8 @@ namespace TaskManager.Core.Services
         {
             try
             {
+              
+
                 if (projectAddRequest == null)
                 {
                     _logger.LogError("{project} is null", projectAddRequest);
@@ -119,7 +121,7 @@ namespace TaskManager.Core.Services
             {
                 if (projectToUpdate == null)
                 {
-                    _logger.LogError("{project} is null", projectToUpdate);
+                    _logger.LogError("{@project} is null", projectToUpdate);
                     throw new ArgumentNullException($"{{projectId}} is empty");
                 }
                 bool result = await _taskManagerRepository.UpdateProjectAsync(projectToUpdate);
