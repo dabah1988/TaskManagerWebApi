@@ -23,3 +23,16 @@ D:\COURS_APPRENTISSAGE_SHARP\LEARN_ANGULAR\API\TaskManager\TaskManager.CORE\obj\
 D:\COURS_APPRENTISSAGE_SHARP\LEARN_ANGULAR\API\TaskManager\TaskManager.CORE\obj\Debug\net8.0\TaskManager.Core.pdb
 D:\COURS_APPRENTISSAGE_SHARP\LEARN_ANGULAR\API\TaskManager\TaskManager.CORE\obj\Debug\net8.0\ref\TaskManager.Core.dll
 D:\COURS_APPRENTISSAGE_SHARP\LEARN_ANGULAR\API\TaskManager\TaskManager.CORE\obj\Debug\net8.0\TaskManager.Core.sourcelink.json
+D:\COURS\ANGULAR\TaskManager\TaskManagerWebApi\TaskManager.CORE\bin\Debug\net8.0\TaskManager.Core.deps.json
+D:\COURS\ANGULAR\TaskManager\TaskManagerWebApi\TaskManager.CORE\bin\Debug\net8.0\TaskManager.Core.dll
+D:\COURS\ANGULAR\TaskManager\TaskManagerWebApi\TaskManager.CORE\bin\Debug\net8.0\TaskManager.Core.pdb
+D:\COURS\ANGULAR\TaskManager\TaskManagerWebApi\TaskManager.CORE\obj\Debug\net8.0\TaskManager.Core.csproj.AssemblyReference.cache
+D:\COURS\ANGULAR\TaskManager\TaskManagerWebApi\TaskManager.CORE\obj\Debug\net8.0\TaskManager.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\COURS\ANGULAR\TaskManager\TaskManagerWebApi\TaskManager.CORE\obj\Debug\net8.0\TaskManager.Core.AssemblyInfoInputs.cache
+D:\COURS\ANGULAR\TaskManager\TaskManagerWebApi\TaskManager.CORE\obj\Debug\net8.0\TaskManager.Core.AssemblyInfo.cs
+D:\COURS\ANGULAR\TaskManager\TaskManagerWebApi\TaskManager.CORE\obj\Debug\net8.0\TaskManager.Core.csproj.CoreCompileInputs.cache
+D:\COURS\ANGULAR\TaskManager\TaskManagerWebApi\TaskManager.CORE\obj\Debug\net8.0\TaskManager.Core.sourcelink.json
+D:\COURS\ANGULAR\TaskManager\TaskManagerWebApi\TaskManager.CORE\obj\Debug\net8.0\TaskManager.Core.dll
+D:\COURS\ANGULAR\TaskManager\TaskManagerWebApi\TaskManager.CORE\obj\Debug\net8.0\refint\TaskManager.Core.dll
+D:\COURS\ANGULAR\TaskManager\TaskManagerWebApi\TaskManager.CORE\obj\Debug\net8.0\TaskManager.Core.pdb
+D:\COURS\ANGULAR\TaskManager\TaskManagerWebApi\TaskManager.CORE\obj\Debug\net8.0\ref\TaskManager.Core.dll

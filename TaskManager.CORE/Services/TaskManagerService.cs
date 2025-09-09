@@ -72,30 +72,24 @@ namespace TaskManager.Core.Services
             return result;
         }
 
-        public async Task<List<Project>> GetAllProjects()
+        public async Task<List<Project>> GetProjects(int pageNumber, int pageSize)
         {
-            try
-            {
+
                 _logger.LogInformation("Récupération de tous les projets depuis la base de données.");
-                var projects= await _taskManagerRepository.GetAllProjectsAsync();
+                var projects= await _taskManagerRepository.GetProjectsAsync(pageNumber,pageSize);
                 if(projects == null || !projects.Any())
                 {
                     _logger.LogError("database project is null {projects}", projects);
                     throw new ArgumentNullException("database project is null ");
                 }
                 return projects  ;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Erreur lors de la récupération des projets.");
-                throw;
-            }
+            
+            
         }
 
         public async Task<Project?> GetProjectByid(Guid projectId)
         {
-            try
-            {
+
                 if (projectId == Guid.Empty)
             {
                 _logger.LogError("{projectId} is empty",projectId);
@@ -107,18 +101,11 @@ namespace TaskManager.Core.Services
                 _logger.LogWarning("{project} is null", project);
             }
             return project;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Erreur lors de la récupération des projets.");
-                throw;
-            }
+            
         }
 
         public async Task<bool> UpdateAsync(Project projectToUpdate)
         {
-            try
-            {
                 if (projectToUpdate == null)
                 {
                     _logger.LogError("{@project} is null", projectToUpdate);
@@ -126,12 +113,12 @@ namespace TaskManager.Core.Services
                 }
                 bool result = await _taskManagerRepository.UpdateProjectAsync(projectToUpdate);
                 return result;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Erreur lors de la récupération des projets.");
-                throw;
-            }
+            
+        }
+
+        public Task<List<Project>> SearchProjectsAsync(int pageNumber, int pageSize, string searchBy, string searchText)
+        {
+             return  _taskManagerRepository.SearchProjectsAsync(pageNumber, pageSize, searchBy, searchText);
         }
     }
 }

@@ -1,16 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TaskManager.Core.Domain.RepositoryContracts;
 using TaskManager.Core.Services;
 using TaskManager.Core.ServicesContract;
 using TaskManager.Infrastructure.DatabaseContext;
 using TaskManager.Infrastructure.Repository;
+using Microsoft.AspNetCore.Builder;
+
+
 
 namespace TaskManager.Infrastructure
 {
@@ -31,5 +29,7 @@ namespace TaskManager.Infrastructure
 
             return services;
         }
+
+      
     }
 }

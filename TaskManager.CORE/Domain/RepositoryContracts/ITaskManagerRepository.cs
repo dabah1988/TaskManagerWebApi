@@ -11,7 +11,9 @@ namespace TaskManager.Core.Domain.RepositoryContracts
     public interface ITaskManagerRepository
     {
         Task<Project?> GetProjectByIdAsync(Guid id);
-        Task<List<Project>> GetAllProjectsAsync();
+        
+        Task<List<Project>> GetProjectsAsync(int pageNumber,int pageSize);
+        Task<List<Project>> SearchProjectsAsync(int pageNumber, int pageSize,string searchBy,string searchText);
         Task<ProjectResponse> AddProjectAsync(Project project);
         Task<bool> UpdateProjectAsync(Project project);
         Task<bool> DeleteProjectAsync(Guid projectId);

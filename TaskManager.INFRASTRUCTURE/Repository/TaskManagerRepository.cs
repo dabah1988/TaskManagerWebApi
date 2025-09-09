@@ -85,11 +85,15 @@ namespace TaskManager.Infrastructure.Repository
             }
         }
 
-        public Task<List<Project>> GetAllProjectsAsync()
+        public Task<List<Project>> GetProjectsAsync(int pageNumber,int pageSize)
         {
             try
             {
-                return _dbContext.Projects!.ToListAsync();
+                return _dbContext.Projects!
+                    .OrderByDescending(p =>p.DateOfStart)
+                    .Skip((pageNumber - 1) * pageSize)
+                    .Take(pageSize)
+                    .ToListAsync();
             }
             catch (Exception ex)
             {
@@ -150,6 +154,34 @@ namespace TaskManager.Infrastructure.Repository
                 _logger.LogWarning(" Error occured {ex}", ex.Message);
                 throw new Exception($"Error occured {ex.Message} non trouvé.");
             }
+        }
+
+        public async Task<List<Project>> SearchProjectsAsync(int pageNumber, int pageSize, string searchBy, string searchText)
+        {
+            var query = _dbContext.Projects.AsQueryable();
+
+            switch (searchBy)
+            {
+                case nameof(Project.ProjectName):
+                    query = query.Where(p => p.ProjectName.Contains(searchText));
+                    break;
+                case nameof(Project.DateOfStart) :
+                    if (DateTime.TryParse(searchText, out var date))
+                        query = query.Where(p => p.DateOfStart == date);
+                    break;
+                case nameof(Project.ProjectDescription) :
+                    query = query.Where(p => p.ProjectDescription.Contains(searchText));
+                    break;
+                case nameof( Project.TeamSize):
+                    if (int.TryParse(searchText, out var size))
+                        query = query.Where(p => p.TeamSize == size);
+                    break;
+            }
+
+            return await query
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
         }
     }
 }

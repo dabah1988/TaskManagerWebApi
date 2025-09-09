@@ -109,9 +109,9 @@ namespace TaskManagerTests
         public async void GetAllProjects_should_return_ArgumentNulleExcetionWithCollectionOfNullProjects()
         {
             List<Project> projects= null;
-            _taskManagerRepositoryMock.Setup(p => p.GetAllProjectsAsync()).ReturnsAsync(projects);
+            _taskManagerRepositoryMock.Setup(p => p.GetProjectsAsync()).ReturnsAsync(projects);
             var exception = await  Assert.ThrowsAsync<ArgumentNullException>(
-                () => _taskManagerService.GetAllProjects());
+                () => _taskManagerService.GetProjects());
             Assert.IsType<ArgumentNullException>(exception);
         }
 
@@ -119,8 +119,8 @@ namespace TaskManagerTests
         public async void GetAllProjects_should_return_ProperCollectionOfProjects()
         {
             List<Project> projects = _fixture.Create<List<Project>>();
-            _taskManagerRepositoryMock.Setup(p => p.GetAllProjectsAsync()).ReturnsAsync(projects);
-            List<Project> projectsReturned = await _taskManagerService.GetAllProjects();
+            _taskManagerRepositoryMock.Setup(p => p.GetProjectsAsync()).ReturnsAsync(projects);
+            List<Project> projectsReturned = await _taskManagerService.GetProjects();
             Assert.True(projectsReturned.Any()); 
         }
 

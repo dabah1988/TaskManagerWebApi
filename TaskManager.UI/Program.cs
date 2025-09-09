@@ -1,5 +1,7 @@
 using Serilog;
 using TaskManager.Infrastructure;
+using TaskManager.UI.Exceptions;
+using TaskManager.UI.Utilities;
 
 
 namespace WebApiTaskManager
@@ -11,8 +13,11 @@ namespace WebApiTaskManager
 
             try
             {
+
                 var builder = WebApplication.CreateBuilder(args);
                 var angularUrl = builder.Configuration["AngularClient:Url"];
+                builder.Services.Configure<paginationSettings>(builder.Configuration.GetSection("NumberElementsByPage"));
+
                 if (!string.IsNullOrWhiteSpace(angularUrl))
                 {
                     builder.Services.AddCors(options =>
@@ -20,7 +25,7 @@ namespace WebApiTaskManager
                         options.AddPolicy("AllowAngularDev",
                             policy =>
                             {
-                                policy.WithOrigins(angularUrl) // l’URL de ton Angular
+                                policy.WithOrigins(angularUrl) // lï¿½URL de ton Angular
                                       .AllowAnyHeader()
                                       .AllowAnyMethod();
                             });
@@ -29,7 +34,7 @@ namespace WebApiTaskManager
 
 
 
-                // Récupérer la configuration complète
+                // Rï¿½cupï¿½rer la configuration complï¿½te
                 var configuration = builder.Configuration;
 
                 // Configurer Serilog en lisant la config dans appsettings.json
@@ -47,6 +52,7 @@ namespace WebApiTaskManager
                 builder.Services.AddSwaggerGen();
                 builder.Services.AddInfrastructure(builder.Configuration);
                 var app = builder.Build();
+                app.UseMiddleware<ErrorHandlingMiddleware>();
 
                 //Configure the HTTP request pipeline.
                 if (app.Environment.IsDevelopment())
@@ -65,19 +71,18 @@ namespace WebApiTaskManager
 
 
                 app.MapControllers();
-
                 app.Run();
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Erreur critique au démarrage :{ex.Message}");
-                Console.WriteLine("Erreur critique au démarrage :");
-                Console.WriteLine(ex.ToString()); // Affiche la stack complète dans la console
+                Console.WriteLine($"Erreur critique au dï¿½marrage :{ex.Message}");
+                Console.WriteLine("Erreur critique au dï¿½marrage :");
+                Console.WriteLine(ex.ToString()); // Affiche la stack complï¿½te dans la console
                 throw;
             }
             finally
             {
-                Log.CloseAndFlush(); // Fermeture propre grâce à Serilog.Extensions.Hosting
+                Log.CloseAndFlush(); // Fermeture propre grï¿½ce ï¿½ Serilog.Extensions.Hosting
             }
         }
     }

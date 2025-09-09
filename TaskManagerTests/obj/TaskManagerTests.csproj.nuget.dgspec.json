@@ -1,23 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManagerTests\\TaskManagerTests.csproj": {}
+    "D:\\COURS\\ANGULAR\\TaskManager\\TaskManagerWebApi\\TaskManagerTests\\TaskManagerTests.csproj": {}
   },
   "projects": {
-    "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManager.CORE\\TaskManager.Core.csproj": {
+    "D:\\COURS\\ANGULAR\\TaskManager\\TaskManagerWebApi\\TaskManager.CORE\\TaskManager.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManager.CORE\\TaskManager.Core.csproj",
+        "projectUniqueName": "D:\\COURS\\ANGULAR\\TaskManager\\TaskManagerWebApi\\TaskManager.CORE\\TaskManager.Core.csproj",
         "projectName": "TaskManager.Core",
-        "projectPath": "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManager.CORE\\TaskManager.Core.csproj",
-        "packagesPath": "C:\\Users\\Hermann KIPRE\\.nuget\\packages\\",
-        "outputPath": "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManager.CORE\\obj\\",
+        "projectPath": "D:\\COURS\\ANGULAR\\TaskManager\\TaskManagerWebApi\\TaskManager.CORE\\TaskManager.Core.csproj",
+        "packagesPath": "C:\\Users\\yvesd\\.nuget\\packages\\",
+        "outputPath": "D:\\COURS\\ANGULAR\\TaskManager\\TaskManagerWebApi\\TaskManager.CORE\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Hermann KIPRE\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\yvesd\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +27,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -43,9 +43,9 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "all"
+          "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.100"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -88,24 +88,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManager.INFRASTRUCTURE\\TaskManager.Infrastructure.csproj": {
+    "D:\\COURS\\ANGULAR\\TaskManager\\TaskManagerWebApi\\TaskManager.INFRASTRUCTURE\\TaskManager.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManager.INFRASTRUCTURE\\TaskManager.Infrastructure.csproj",
+        "projectUniqueName": "D:\\COURS\\ANGULAR\\TaskManager\\TaskManagerWebApi\\TaskManager.INFRASTRUCTURE\\TaskManager.Infrastructure.csproj",
         "projectName": "TaskManager.Infrastructure",
-        "projectPath": "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManager.INFRASTRUCTURE\\TaskManager.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\Hermann KIPRE\\.nuget\\packages\\",
-        "outputPath": "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManager.INFRASTRUCTURE\\obj\\",
+        "projectPath": "D:\\COURS\\ANGULAR\\TaskManager\\TaskManagerWebApi\\TaskManager.INFRASTRUCTURE\\TaskManager.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\yvesd\\.nuget\\packages\\",
+        "outputPath": "D:\\COURS\\ANGULAR\\TaskManager\\TaskManagerWebApi\\TaskManager.INFRASTRUCTURE\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Hermann KIPRE\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\yvesd\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -114,15 +115,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManager.CORE\\TaskManager.Core.csproj": {
-                "projectPath": "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManager.CORE\\TaskManager.Core.csproj"
+              "D:\\COURS\\ANGULAR\\TaskManager\\TaskManagerWebApi\\TaskManager.CORE\\TaskManager.Core.csproj": {
+                "projectPath": "D:\\COURS\\ANGULAR\\TaskManager\\TaskManagerWebApi\\TaskManager.CORE\\TaskManager.Core.csproj"
               }
             }
           }
@@ -135,9 +135,9 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "all"
+          "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.100"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -150,6 +150,10 @@
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[12.0.1, )"
+            },
+            "Microsoft.AspNetCore.Http": {
+              "target": "Package",
+              "version": "[2.3.0, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -182,24 +186,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManager.UI\\TaskManager.UI.csproj": {
+    "D:\\COURS\\ANGULAR\\TaskManager\\TaskManagerWebApi\\TaskManager.UI\\TaskManager.UI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManager.UI\\TaskManager.UI.csproj",
+        "projectUniqueName": "D:\\COURS\\ANGULAR\\TaskManager\\TaskManagerWebApi\\TaskManager.UI\\TaskManager.UI.csproj",
         "projectName": "TaskManager.UI",
-        "projectPath": "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManager.UI\\TaskManager.UI.csproj",
-        "packagesPath": "C:\\Users\\Hermann KIPRE\\.nuget\\packages\\",
-        "outputPath": "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManager.UI\\obj\\",
+        "projectPath": "D:\\COURS\\ANGULAR\\TaskManager\\TaskManagerWebApi\\TaskManager.UI\\TaskManager.UI.csproj",
+        "packagesPath": "C:\\Users\\yvesd\\.nuget\\packages\\",
+        "outputPath": "D:\\COURS\\ANGULAR\\TaskManager\\TaskManagerWebApi\\TaskManager.UI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Hermann KIPRE\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\yvesd\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -208,18 +213,17 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManager.CORE\\TaskManager.Core.csproj": {
-                "projectPath": "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManager.CORE\\TaskManager.Core.csproj"
+              "D:\\COURS\\ANGULAR\\TaskManager\\TaskManagerWebApi\\TaskManager.CORE\\TaskManager.Core.csproj": {
+                "projectPath": "D:\\COURS\\ANGULAR\\TaskManager\\TaskManagerWebApi\\TaskManager.CORE\\TaskManager.Core.csproj"
               },
-              "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManager.INFRASTRUCTURE\\TaskManager.Infrastructure.csproj": {
-                "projectPath": "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManager.INFRASTRUCTURE\\TaskManager.Infrastructure.csproj"
+              "D:\\COURS\\ANGULAR\\TaskManager\\TaskManagerWebApi\\TaskManager.INFRASTRUCTURE\\TaskManager.Infrastructure.csproj": {
+                "projectPath": "D:\\COURS\\ANGULAR\\TaskManager\\TaskManagerWebApi\\TaskManager.INFRASTRUCTURE\\TaskManager.Infrastructure.csproj"
               }
             }
           }
@@ -232,9 +236,9 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "all"
+          "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.100"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -263,6 +267,10 @@
             "Serilog": {
               "target": "Package",
               "version": "[4.3.0, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[9.0.0, )"
             },
             "Serilog.Extensions.Hosting": {
               "target": "Package",
@@ -308,24 +316,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManagerTests\\TaskManagerTests.csproj": {
+    "D:\\COURS\\ANGULAR\\TaskManager\\TaskManagerWebApi\\TaskManagerTests\\TaskManagerTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManagerTests\\TaskManagerTests.csproj",
+        "projectUniqueName": "D:\\COURS\\ANGULAR\\TaskManager\\TaskManagerWebApi\\TaskManagerTests\\TaskManagerTests.csproj",
         "projectName": "TaskManagerTests",
-        "projectPath": "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManagerTests\\TaskManagerTests.csproj",
-        "packagesPath": "C:\\Users\\Hermann KIPRE\\.nuget\\packages\\",
-        "outputPath": "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManagerTests\\obj\\",
+        "projectPath": "D:\\COURS\\ANGULAR\\TaskManager\\TaskManagerWebApi\\TaskManagerTests\\TaskManagerTests.csproj",
+        "packagesPath": "C:\\Users\\yvesd\\.nuget\\packages\\",
+        "outputPath": "D:\\COURS\\ANGULAR\\TaskManager\\TaskManagerWebApi\\TaskManagerTests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Hermann KIPRE\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\yvesd\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -334,21 +343,20 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManager.CORE\\TaskManager.Core.csproj": {
-                "projectPath": "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManager.CORE\\TaskManager.Core.csproj"
+              "D:\\COURS\\ANGULAR\\TaskManager\\TaskManagerWebApi\\TaskManager.CORE\\TaskManager.Core.csproj": {
+                "projectPath": "D:\\COURS\\ANGULAR\\TaskManager\\TaskManagerWebApi\\TaskManager.CORE\\TaskManager.Core.csproj"
               },
-              "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManager.INFRASTRUCTURE\\TaskManager.Infrastructure.csproj": {
-                "projectPath": "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManager.INFRASTRUCTURE\\TaskManager.Infrastructure.csproj"
+              "D:\\COURS\\ANGULAR\\TaskManager\\TaskManagerWebApi\\TaskManager.INFRASTRUCTURE\\TaskManager.Infrastructure.csproj": {
+                "projectPath": "D:\\COURS\\ANGULAR\\TaskManager\\TaskManagerWebApi\\TaskManager.INFRASTRUCTURE\\TaskManager.Infrastructure.csproj"
               },
-              "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManager.UI\\TaskManager.UI.csproj": {
-                "projectPath": "D:\\COURS_APPRENTISSAGE_SHARP\\LEARN_ANGULAR\\API\\TaskManager\\TaskManager.UI\\TaskManager.UI.csproj"
+              "D:\\COURS\\ANGULAR\\TaskManager\\TaskManagerWebApi\\TaskManager.UI\\TaskManager.UI.csproj": {
+                "projectPath": "D:\\COURS\\ANGULAR\\TaskManager\\TaskManagerWebApi\\TaskManager.UI\\TaskManager.UI.csproj"
               }
             }
           }
@@ -361,9 +369,9 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "all"
+          "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.100"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -414,7 +422,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

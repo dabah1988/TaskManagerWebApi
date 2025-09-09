@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using TaskManager.Core.Domain.RepositoryContracts;
 using TaskManager.Core.DTO;
 using TaskManager.Core.ServicesContract;
+using TaskManager.UI.Utilities;
 using WebApiTaskManager.Core.Domain.Entities;
 
 namespace WebApiTaskManager.Controllers
@@ -15,79 +17,66 @@ namespace WebApiTaskManager.Controllers
         private readonly ITaskManagerService _serviceTaskManager;
         private readonly ILogger<TaskManagerController> _logger;
         private readonly IMapper _mapper;
+        private readonly IConfiguration _configuration;
+        private readonly paginationSettings _paginationSettings;
         public TaskManagerController(
             ITaskManagerService serviceTaskManager,
             ILogger<TaskManagerController> logger,
-            IMapper mapper
+            IMapper mapper,
+            IConfiguration configuration ,
+            IOptions<paginationSettings> paginationSettings
             )
         {
             _logger = logger;
             _serviceTaskManager = serviceTaskManager;
             _mapper = mapper;
+            _configuration = configuration;
+            _paginationSettings = paginationSettings.Value;
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Project>>> GetAllProjects()
-        {
-            try
-            {
-                var projects = await _serviceTaskManager.GetAllProjects();
-                if (projects == null || !projects.Any())
+        public async Task<ActionResult<List<ProjectResponse>>> GetProjects( [FromQuery] int pageNumber = 1, [FromQuery] int? pageSize = null )
+        {             
+                var pageSizeTemp = pageSize.GetValueOrDefault(_paginationSettings.NumberElementsByPage);
+            if (pageNumber <= 0) pageNumber = 1;
+          if(pageSizeTemp <= 0)      pageSize = 10;
+
+            var projects = await _serviceTaskManager.GetProjects(pageNumber, pageSizeTemp);
+            if (projects == null  || !projects.Any())
                 {
                     _logger.LogInformation("Aucun projet trouvé.");
-                    return NotFound("Aucun projet disponible.");
+                    return StatusCode(404,"Not found projects.");
                 }
-                _logger.LogInformation("Projects founds {@projects}", projects);
-                return Ok(projects);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Erreur lors de la récupération des projets.");
-                return StatusCode(500, "Erreur serveur interne.");
-            }
+                var projectResponses = _mapper.Map<List<ProjectResponse>>(projects);
+                _logger.LogInformation("Projects founds {@projects}", projectResponses.Count);
+                return Ok(projectResponses);           
         }
 
-        [HttpGet("search/{seachBy}/{searchText}")]
-        public async Task<ActionResult<List<Project>>> Search(string seachBy,string seachText)
+        [HttpGet("search")]
+        public async Task<ActionResult<List<ProjectResponse>>> Search( [FromQuery] string searchBy, [FromQuery] string searchText, [FromQuery] int pageNumber = 1, [FromQuery] int? pageSize = null)
         {
-            try
+            var pageSizeTemp = pageSize.GetValueOrDefault(_paginationSettings.NumberElementsByPage);
+            if (pageNumber <= 0) pageNumber = 1;
+            if (pageSizeTemp <= 0) pageSize = 10;
+            if (string.IsNullOrWhiteSpace(searchText))
             {
-               var projects = await _serviceTaskManager.GetAllProjects(); ; 
-                switch (seachBy)
-                {
-                    case nameof(Project.ProjectName):
-                        projects = projects.Where(p => p.ProjectName.Contains(seachText)).ToList();  break;
-
-                    case nameof(Project.DateOfStart):
-                        projects = projects.Where(p => p.DateOfStart.Equals(seachText)).ToList(); break;
-
-                    case nameof(Project.ProjectDescription):
-                        projects = projects.Where(p => p.ProjectDescription.Contains(seachText)).ToList(); break;
-
-                    case nameof(Project.TeamSize):
-                        projects = projects.Where(p => p.TeamSize.Equals(seachText)).ToList(); break;
-
-                }
-                if (projects == null || !projects.Any())
-                {
-                    _logger.LogInformation("Aucun projet trouvé.");
-                    return NotFound("Aucun projet disponible.");
-                }
-                _logger.LogInformation("Projects founds {@projects}",projects);
-                return Ok(projects);
+                return BadRequest("Search text cannot be empty.");
             }
-            catch (Exception ex)
+            var projects = await _serviceTaskManager.SearchProjectsAsync(pageNumber, pageSizeTemp, searchBy, searchText);
+            if (projects == null || !projects.Any())
             {
-                _logger.LogError(ex, "Erreur lors de la récupération des projets.");
-                return StatusCode(500, "Erreur serveur interne.");
+                _logger.LogInformation("Aucun projet trouvé.");
+                return NotFound("Aucun projet disponible.");
             }
+            var projectResponses = _mapper.Map<List<ProjectResponse>>(projects);
+            _logger.LogInformation("Projects founds {@projects}", projectResponses.Count);
+            return Ok(projectResponses);
         }
 
         [HttpPost]
         public async Task<IActionResult> AddProject([FromBody]ProjectAddRequest projectAddRequest)
         {
-            try
-            {
+           
                 if (!ModelState.IsValid)
                 {
                     return BadRequest(ModelState); // retourne les erreurs de validation
@@ -103,14 +92,9 @@ namespace WebApiTaskManager.Controllers
                     _logger.LogError("Le service a retourné null après tentative d'ajout.");
                     return StatusCode(500, "Erreur lors de la création du projet.");
                 }
-                _logger.LogInformation("inserttion dans la base de données réussie ; {@project}",projectResponse);
-                return Ok(projectResponse);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Erreur lors de la récupération des projets.");
-                return StatusCode(500, "Erreur serveur interne.");
-            }
+                _logger.LogInformation("insertion dans la base de données réussie ; {@project}",projectResponse);
+                return Ok(projectResponse);            
+         
         }
 
 

@@ -4,6 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,6 +20,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Serilog" Version="4.3.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="9.0.0" />
     <PackageReference Include="Serilog.Extensions.Hosting" Version="9.0.0" />
     <PackageReference Include="Serilog.Settings.Configuration" Version="9.0.0" />
     <PackageReference Include="Serilog.Sinks.Console" Version="6.0.0" />
@@ -27,13 +29,15 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\" />
-  </ItemGroup>
+<ItemGroup>
+  <Content Include="wwwroot\**\*">
+    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+  </Content>
+</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\TaskManager.CORE\TaskManager.Core.csproj" />
-    <ProjectReference Include="..\TaskManager.INFRASTRUCTURE\TaskManager.Infrastructure.csproj" />
-  </ItemGroup>
+<ItemGroup>
+  <ProjectReference Include="..\TaskManager.CORE\TaskManager.Core.csproj" />
+  <ProjectReference Include="..\TaskManager.INFRASTRUCTURE\TaskManager.Infrastructure.csproj" />
+</ItemGroup>
 
 </Project>
