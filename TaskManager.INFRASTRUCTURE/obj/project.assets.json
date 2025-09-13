@@ -1757,6 +1757,16 @@
         "runtime": {
           "bin/placeholder/TaskManager.Core.dll": {}
         }
+      },
+      "Utilitaire/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Utilitaire.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Utilitaire.dll": {}
+        }
       }
     }
   },
@@ -4566,6 +4576,11 @@
       "type": "project",
       "path": "../TaskManager.CORE/TaskManager.Core.csproj",
       "msbuildProject": "../TaskManager.CORE/TaskManager.Core.csproj"
+    },
+    "Utilitaire/1.0.0": {
+      "type": "project",
+      "path": "../Utilitaire/Utilitaire.csproj",
+      "msbuildProject": "../Utilitaire/Utilitaire.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -4576,7 +4591,8 @@
       "Microsoft.EntityFrameworkCore >= 8.0.0",
       "Microsoft.EntityFrameworkCore.Design >= 8.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.0",
-      "TaskManager.Core >= 1.0.0"
+      "TaskManager.Core >= 1.0.0",
+      "Utilitaire >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -4615,6 +4631,9 @@
           "projectReferences": {
             "D:\\COURS\\ANGULAR\\TaskManager\\TaskManagerWebApi\\TaskManager.CORE\\TaskManager.Core.csproj": {
               "projectPath": "D:\\COURS\\ANGULAR\\TaskManager\\TaskManagerWebApi\\TaskManager.CORE\\TaskManager.Core.csproj"
+            },
+            "D:\\COURS\\ANGULAR\\TaskManager\\TaskManagerWebApi\\Utilitaire\\Utilitaire.csproj": {
+              "projectPath": "D:\\COURS\\ANGULAR\\TaskManager\\TaskManagerWebApi\\Utilitaire\\Utilitaire.csproj"
             }
           }
         }

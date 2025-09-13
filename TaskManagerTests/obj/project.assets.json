@@ -3476,7 +3476,8 @@
           "Microsoft.AspNetCore.Http": "2.3.0",
           "Microsoft.EntityFrameworkCore": "8.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.0",
-          "TaskManager.Core": "1.0.0"
+          "TaskManager.Core": "1.0.0",
+          "Utilitaire": "1.0.0"
         },
         "compile": {
           "bin/placeholder/TaskManager.Infrastructure.dll": {}
@@ -3511,6 +3512,16 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
+      },
+      "Utilitaire/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Utilitaire.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Utilitaire.dll": {}
+        }
       }
     }
   },
@@ -10090,6 +10101,11 @@
       "type": "project",
       "path": "../TaskManager.UI/TaskManager.UI.csproj",
       "msbuildProject": "../TaskManager.UI/TaskManager.UI.csproj"
+    },
+    "Utilitaire/1.0.0": {
+      "type": "project",
+      "path": "../Utilitaire/Utilitaire.csproj",
+      "msbuildProject": "../Utilitaire/Utilitaire.csproj"
     }
   },
   "projectFileDependencyGroups": {

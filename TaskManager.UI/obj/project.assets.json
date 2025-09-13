@@ -2232,13 +2232,24 @@
           "Microsoft.AspNetCore.Http": "2.3.0",
           "Microsoft.EntityFrameworkCore": "8.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.0",
-          "TaskManager.Core": "1.0.0"
+          "TaskManager.Core": "1.0.0",
+          "Utilitaire": "1.0.0"
         },
         "compile": {
           "bin/placeholder/TaskManager.Infrastructure.dll": {}
         },
         "runtime": {
           "bin/placeholder/TaskManager.Infrastructure.dll": {}
+        }
+      },
+      "Utilitaire/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Utilitaire.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Utilitaire.dll": {}
         }
       }
     }
@@ -5754,6 +5765,11 @@
       "type": "project",
       "path": "../TaskManager.INFRASTRUCTURE/TaskManager.Infrastructure.csproj",
       "msbuildProject": "../TaskManager.INFRASTRUCTURE/TaskManager.Infrastructure.csproj"
+    },
+    "Utilitaire/1.0.0": {
+      "type": "project",
+      "path": "../Utilitaire/Utilitaire.csproj",
+      "msbuildProject": "../Utilitaire/Utilitaire.csproj"
     }
   },
   "projectFileDependencyGroups": {

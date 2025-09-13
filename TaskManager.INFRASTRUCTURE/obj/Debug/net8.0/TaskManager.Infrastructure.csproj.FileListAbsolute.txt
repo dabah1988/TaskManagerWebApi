@@ -52,3 +52,5 @@ D:\COURS\ANGULAR\TaskManager\TaskManagerWebApi\TaskManager.INFRASTRUCTURE\obj\De
 D:\COURS\ANGULAR\TaskManager\TaskManagerWebApi\TaskManager.INFRASTRUCTURE\obj\Debug\net8.0\TaskManager.Infrastructure.pdb
 D:\COURS\ANGULAR\TaskManager\TaskManagerWebApi\TaskManager.INFRASTRUCTURE\obj\Debug\net8.0\TaskManager.Infrastructure.genruntimeconfig.cache
 D:\COURS\ANGULAR\TaskManager\TaskManagerWebApi\TaskManager.INFRASTRUCTURE\obj\Debug\net8.0\ref\TaskManager.Infrastructure.dll
+D:\COURS\ANGULAR\TaskManager\TaskManagerWebApi\TaskManager.INFRASTRUCTURE\bin\Debug\net8.0\Utilitaire.dll
+D:\COURS\ANGULAR\TaskManager\TaskManagerWebApi\TaskManager.INFRASTRUCTURE\bin\Debug\net8.0\Utilitaire.pdb

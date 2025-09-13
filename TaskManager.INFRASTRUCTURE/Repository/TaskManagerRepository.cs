@@ -6,7 +6,7 @@ using WebApiTaskManager.Core.Domain.Entities;
 using AutoMapper;
 using TaskManager.Core.Exceptions;
 using Microsoft.EntityFrameworkCore;
-
+using Utilitaire;
 namespace TaskManager.Infrastructure.Repository
 {
     public class TaskManagerRepository : ITaskManagerRepository
@@ -158,21 +158,20 @@ namespace TaskManager.Infrastructure.Repository
 
         public async Task<List<Project>> SearchProjectsAsync(int pageNumber, int pageSize, string searchBy, string searchText)
         {
-            var query = _dbContext.Projects.AsQueryable();
-
+            var query = _dbContext.Projects!.AsQueryable();
             switch (searchBy)
             {
-                case nameof(Project.ProjectName):
+                case CriteriaOfSearch.ProjectName:
                     query = query.Where(p => p.ProjectName.Contains(searchText));
                     break;
-                case nameof(Project.DateOfStart) :
+                case CriteriaOfSearch.DateOfStart :
                     if (DateTime.TryParse(searchText, out var date))
                         query = query.Where(p => p.DateOfStart == date);
                     break;
-                case nameof(Project.ProjectDescription) :
+                case CriteriaOfSearch.projectDescription :
                     query = query.Where(p => p.ProjectDescription.Contains(searchText));
                     break;
-                case nameof( Project.TeamSize):
+                case CriteriaOfSearch.teamSize:
                     if (int.TryParse(searchText, out var size))
                         query = query.Where(p => p.TeamSize == size);
                     break;
