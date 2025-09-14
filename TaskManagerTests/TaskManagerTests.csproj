@@ -23,6 +23,7 @@
     <ProjectReference Include="..\TaskManager.CORE\TaskManager.Core.csproj" />
     <ProjectReference Include="..\TaskManager.INFRASTRUCTURE\TaskManager.Infrastructure.csproj" />
     <ProjectReference Include="..\TaskManager.UI\TaskManager.UI.csproj" />
+    <ProjectReference Include="..\Utilitaire\Utilitaire.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -480,3 +480,5 @@ D:\COURS\ANGULAR\TaskManager\TaskManagerWebApi\TaskManagerTests\obj\Debug\net8.0
 D:\COURS\ANGULAR\TaskManager\TaskManagerWebApi\TaskManagerTests\obj\Debug\net8.0\TaskManagerTests.pdb
 D:\COURS\ANGULAR\TaskManager\TaskManagerWebApi\TaskManagerTests\obj\Debug\net8.0\TaskManagerTests.genruntimeconfig.cache
 D:\COURS\ANGULAR\TaskManager\TaskManagerWebApi\TaskManagerTests\obj\Debug\net8.0\ref\TaskManagerTests.dll
+D:\COURS\ANGULAR\TaskManager\TaskManagerWebApi\TaskManagerTests\bin\Debug\net8.0\Utilitaire.dll
+D:\COURS\ANGULAR\TaskManager\TaskManagerWebApi\TaskManagerTests\bin\Debug\net8.0\Utilitaire.pdb

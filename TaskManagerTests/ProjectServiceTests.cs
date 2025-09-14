@@ -7,7 +7,8 @@ using TaskManager.Core.Services;
 using TaskManager.Core.ServicesContract;
 using AutoFixture;
 using WebApiTaskManager.Core.Domain.Entities;
-
+using Utilitaire;
+using AutoFixture.AutoMoq;
 namespace TaskManagerTests
 {
     public class ProjectTest
@@ -108,10 +109,10 @@ namespace TaskManagerTests
         [Fact]
         public async void GetAllProjects_should_return_ArgumentNulleExcetionWithCollectionOfNullProjects()
         {
-            List<Project> projects= null;
-            _taskManagerRepositoryMock.Setup(p => p.GetProjectsAsync()).ReturnsAsync(projects);
+            List<Project>? projects= null;
+            _taskManagerRepositoryMock.Setup(p => p.GetProjectsAsync(1,5)).ReturnsAsync(projects);
             var exception = await  Assert.ThrowsAsync<ArgumentNullException>(
-                () => _taskManagerService.GetProjects());
+                () => _taskManagerService.GetProjects(1,10));
             Assert.IsType<ArgumentNullException>(exception);
         }
 
@@ -119,8 +120,8 @@ namespace TaskManagerTests
         public async void GetAllProjects_should_return_ProperCollectionOfProjects()
         {
             List<Project> projects = _fixture.Create<List<Project>>();
-            _taskManagerRepositoryMock.Setup(p => p.GetProjectsAsync()).ReturnsAsync(projects);
-            List<Project> projectsReturned = await _taskManagerService.GetProjects();
+            _taskManagerRepositoryMock.Setup(p => p.GetProjectsAsync(1,10)).ReturnsAsync(projects);
+            List<Project> projectsReturned = await _taskManagerService.GetProjects(1,10);
             Assert.True(projectsReturned.Any()); 
         }
 
@@ -131,6 +132,59 @@ namespace TaskManagerTests
             _taskManagerRepositoryMock.Setup(p => p.UpdateProjectAsync(It.IsAny<Project>())).ReturnsAsync(true);
             bool isUpdated = await _taskManagerService.UpdateAsync(project);
             Assert.True(isUpdated);
+        }
+
+        //fonction Search
+        [Fact]
+        public async void Search_by_projectName_should_return_listOfProperProjects_accordingName()
+        {
+            int pageNumber=1, pageSize=2;
+            Project  project1 = _fixture.Build<Project>()
+              .With(p => p.ProjectName, "doublure du patron")
+              .With(p =>p.TeamSize, 100)
+              .With(p => p.DateOfStart, DateTime.UtcNow)
+              .With(p=>p.ProjectDescription, "Un livre qui montre comment être incontournable en entreprise")
+              .Create();
+
+            Project project2 = _fixture.Build<Project>()
+        .With(p => p.ProjectName, "planifier sa carrière")
+           .With(p=>p.TeamSize,1)
+                   .With(p => p.DateOfStart, DateTime.UtcNow)
+           .With(p=>p.ProjectDescription,"un livre où Il est question de bâtir son propre profil")
+         .Create();
+
+            Project project3 = _fixture.Build<Project>()
+                .With( p => p.TeamSize,100)
+                .With(p => p.ProjectDescription,"un livre où il est question de  courage")
+                .Create();
+
+            Project project4 = _fixture.Build<Project>()
+                .With(p => p.TeamSize, 100)
+                .With(p => p.ProjectName, "Expertise technique")
+                .With(p => p.ProjectDescription, "un livre où il est question d'expertise technique")
+                .Create();
+
+            List<Project> projects = new List<Project>() { project1,project2,project3,project4};
+
+            _taskManagerRepositoryMock.
+                Setup(p => p.SearchProjectsAsync(pageNumber,pageSize,CriteriaOfSearch.ProjectName, "doublure "))
+                .ReturnsAsync(new List<Project>() { project1});
+
+            _taskManagerRepositoryMock.
+             Setup(p => p.SearchProjectsAsync(pageNumber, pageSize, CriteriaOfSearch.projectDescription, "livre"))
+             .ReturnsAsync(projects);
+
+            List<Project> projectNameDoublure =
+       await _taskManagerService.SearchProjectsAsync(pageNumber, pageSize, CriteriaOfSearch.ProjectName, "doublure");
+          foreach(var myProject  in projectNameDoublure)
+            {
+                Assert.True(myProject.ProjectName == project1.ProjectName);
+            }
+
+            List<Project> projectDescriptionForLivres =
+                await _taskManagerService.SearchProjectsAsync(pageNumber, pageSize, CriteriaOfSearch.projectDescription, "livre");
+            Assert.True(projectDescriptionForLivres.Count == projects.Count);
+
         }
 
     }

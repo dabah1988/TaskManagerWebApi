@@ -15,6 +15,7 @@
           "TaskManager.Core": "1.0.0",
           "TaskManager.Infrastructure": "1.0.0",
           "TaskManager.UI": "1.0.0",
+          "Utilitaire": "1.0.0",
           "coverlet.collector": "6.0.0",
           "xunit": "2.5.3",
           "xunit.runner.visualstudio": "2.5.3"
@@ -2025,7 +2026,8 @@
           "Microsoft.AspNetCore.Http": "2.3.0",
           "Microsoft.EntityFrameworkCore": "8.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.0",
-          "TaskManager.Core": "1.0.0"
+          "TaskManager.Core": "1.0.0",
+          "Utilitaire": "1.0.0"
         },
         "runtime": {
           "TaskManager.Infrastructure.dll": {
@@ -2051,6 +2053,14 @@
         },
         "runtime": {
           "TaskManager.UI.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Utilitaire/1.0.0": {
+        "runtime": {
+          "Utilitaire.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -3384,6 +3394,11 @@
       "sha512": ""
     },
     "TaskManager.UI/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Utilitaire/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
