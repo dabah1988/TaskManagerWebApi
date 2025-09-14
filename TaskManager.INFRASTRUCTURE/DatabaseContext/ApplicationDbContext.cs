@@ -1,15 +1,21 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using TaskManager.Core.Identity;
 using WebApiTaskManager.Core.Domain.Entities;
 
 namespace TaskManager.Infrastructure.DatabaseContext
 {
-    public class ApplicationDbContext: DbContext
+    public class ApplicationDbContext: IdentityDbContext<ApplicationUser,ApplicationRole,Guid>
     {
        
         public DbSet<Project>? Projects { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
        : base(options)
         {
+        }
+        public ApplicationDbContext()
+        {
+            
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

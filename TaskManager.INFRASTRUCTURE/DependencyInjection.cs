@@ -1,13 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TaskManager.Core.Domain.RepositoryContracts;
+using TaskManager.Core.Identity;
 using TaskManager.Core.Services;
 using TaskManager.Core.ServicesContract;
 using TaskManager.Infrastructure.DatabaseContext;
 using TaskManager.Infrastructure.Repository;
-using Microsoft.AspNetCore.Builder;
-
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 
 namespace TaskManager.Infrastructure
@@ -26,10 +27,9 @@ namespace TaskManager.Infrastructure
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped<ITaskManagerRepository, TaskManagerRepository>();
             services.AddScoped<ITaskManagerService, TaskManagerService>();
-
+         
             return services;
         }
-
       
     }
 }

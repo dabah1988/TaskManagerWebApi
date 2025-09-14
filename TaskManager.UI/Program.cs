@@ -1,5 +1,9 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Serilog;
+using TaskManager.Core.Identity;
 using TaskManager.Infrastructure;
+using TaskManager.Infrastructure.DatabaseContext;
 using TaskManager.UI.Exceptions;
 using TaskManager.UI.Utilities;
 
@@ -51,25 +55,36 @@ namespace WebApiTaskManager
                 builder.Services.AddEndpointsApiExplorer();
                 builder.Services.AddSwaggerGen();
                 builder.Services.AddInfrastructure(builder.Configuration);
+                builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
+                {
+                    options.Password.RequireNonAlphanumeric = true;
+                    options.Password.RequireDigit = true;
+                    options.Password.RequireLowercase = true;
+                    options.Password.RequireUppercase = true;
+                    options.Password.RequiredLength = 6;
+                })
+                  .AddEntityFrameworkStores<ApplicationDbContext>()
+                  .AddDefaultTokenProviders()
+                . AddUserStore<UserStore<ApplicationUser,ApplicationRole,ApplicationDbContext,Guid>>()
+                .AddRoleStore<RoleStore<ApplicationRole,ApplicationDbContext,Guid>>()   
+
+                    ;
                 var app = builder.Build();
                 app.UseMiddleware<ErrorHandlingMiddleware>();
 
                 //Configure the HTTP request pipeline.
                 if (app.Environment.IsDevelopment())
-                {
+                {''
                     app.UseSwagger();
                     app.UseSwaggerUI();
                 }
-
-                app.UseStaticFiles();
                 app.UseHttpsRedirection();
-
+                app.UseStaticFiles();
+                app.UseRouting();
                 // Appliquer la politique CORS avant l'authorization
                 app.UseCors("AllowAngularDev");
-
-                app.UseAuthorization();
-
-
+                app.UseAuthentication();
+                app.UseAuthorization();       
                 app.MapControllers();
                 app.Run();
             }
