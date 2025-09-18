@@ -18,7 +18,7 @@ namespace TaskManager.Core.DTO
         [Remote(action: "IsEmailAlreadyRegister",controller:  "Account",ErrorMessage="Email is already used")]
         public  string? Email { get; set; }
 
-        public string? FullName { get; set; }
+        public string? login { get; set; }
         [RegularExpression(@"^[0-9]*$", ErrorMessage = "Invalid phone number")]
         public string? PhoneNumber { get; set; }
 

@@ -17,11 +17,14 @@ namespace TaskManager.UI.Controllers
         private readonly ILogger<AccountController> _logger;
         public AccountController(UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
-          RoleManager<ApplicationRole> _roleManager)
+          RoleManager<ApplicationRole> roleManager,
+          ILogger<AccountController> logger
+          )
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            _roleManager = _roleManager;
+            _roleManager = roleManager;
+            _logger = logger;
         }
 
         [HttpPost("register")]
@@ -36,7 +39,7 @@ namespace TaskManager.UI.Controllers
             {
                 UserName = registerDTO.Username,
                 Email = registerDTO.Email,
-                PersonName = registerDTO.FullName,
+                PersonName = registerDTO.login,
                 PhoneNumber = registerDTO.PhoneNumber
             };
             var result = await _userManager.CreateAsync(user, registerDTO.Password);

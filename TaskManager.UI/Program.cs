@@ -65,36 +65,57 @@ namespace WebApiTaskManager
                 })
                   .AddEntityFrameworkStores<ApplicationDbContext>()
                   .AddDefaultTokenProviders()
-                . AddUserStore<UserStore<ApplicationUser,ApplicationRole,ApplicationDbContext,Guid>>()
-                .AddRoleStore<RoleStore<ApplicationRole,ApplicationDbContext,Guid>>()   
+                .AddUserStore<UserStore<ApplicationUser, ApplicationRole, ApplicationDbContext, Guid>>()
+                .AddRoleStore<RoleStore<ApplicationRole, ApplicationDbContext, Guid>>();
 
-                    ;
+
+
                 var app = builder.Build();
                 app.UseMiddleware<ErrorHandlingMiddleware>();
 
                 //Configure the HTTP request pipeline.
-                if (app.Environment.IsDevelopment())
+                if (!builder.Environment.ApplicationName.Contains("ef"))
                 {
-                    app.UseSwagger();
-                    app.UseSwaggerUI();
+                    app.UseMiddleware<ErrorHandlingMiddleware>();
+
+                    if (app.Environment.IsDevelopment())
+                    {
+                        app.UseSwagger();
+                        app.UseSwaggerUI();
+                    }
+
+                    app.UseHttpsRedirection();
+                    app.UseStaticFiles();
+                    app.UseRouting();
+                    app.UseCors("AllowAngularDev");
+                    app.UseAuthentication();
+                    app.UseAuthorization();
+                    app.MapControllers();
+                    app.Run();
                 }
-                app.UseHttpsRedirection();
-                app.UseStaticFiles();
-                app.UseRouting();
-                // Appliquer la politique CORS avant l'authorization
-                app.UseCors("AllowAngularDev");
-                app.UseAuthentication();
-                app.UseAuthorization();       
-                app.MapControllers();
-                app.Run();
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Erreur critique au d�marrage :{ex.Message}");
-                Console.WriteLine("Erreur critique au d�marrage :");
-                Console.WriteLine(ex.ToString()); // Affiche la stack compl�te dans la console
-                throw;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("❌ Erreur critique au démarrage !");
+                Console.ResetColor();
+
+                Console.WriteLine($"Message : {ex.Message}");
+
+                // Parcours des InnerExceptions pour afficher la vraie cause
+                var inner = ex;
+                while (inner.InnerException != null)
+                {
+                    inner = inner.InnerException;
+                    Console.WriteLine($"➡️ InnerException : {inner.Message}");
+                }
+
+                Console.WriteLine("StackTrace :");
+                Console.WriteLine(ex.ToString());
+
+                throw; // important pour que le process s’arrête proprement
             }
+
             finally
             {
                 Log.CloseAndFlush(); // Fermeture propre gr�ce � Serilog.Extensions.Hosting
