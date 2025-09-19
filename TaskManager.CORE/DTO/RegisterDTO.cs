@@ -11,6 +11,9 @@ namespace TaskManager.Core.DTO
 {
     public class RegisterDTO
     {
+        [Required(ErrorMessage = "PersonName  is required")]
+        public string? PersonName { get; set; }
+
         [Required(ErrorMessage ="Username is required")]
         public  string? Username { get; set; }
         [Required(ErrorMessage = "Email is required")]
@@ -18,7 +21,6 @@ namespace TaskManager.Core.DTO
         [Remote(action: "IsEmailAlreadyRegister",controller:  "Account",ErrorMessage="Email is already used")]
         public  string? Email { get; set; }
 
-        public string? login { get; set; }
         [RegularExpression(@"^[0-9]*$", ErrorMessage = "Invalid phone number")]
         public string? PhoneNumber { get; set; }
 

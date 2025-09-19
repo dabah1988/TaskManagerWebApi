@@ -6,6 +6,9 @@ using TaskManager.Core.Identity;
 
 namespace TaskManager.UI.Controllers
 {
+    /// <summary>
+    /// For user auhentication 
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     [AllowAnonymous]
@@ -15,6 +18,14 @@ namespace TaskManager.UI.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly RoleManager<ApplicationRole> _roleManager;
         private readonly ILogger<AccountController> _logger;
+
+        /// <summary>
+        /// For user registration and login
+        /// </summary>
+        /// <param name="userManager"></param>
+        /// <param name="signInManager"></param>
+        /// <param name="roleManager"></param>
+        /// <param name="logger"></param>
         public AccountController(UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
           RoleManager<ApplicationRole> roleManager,
@@ -35,11 +46,13 @@ namespace TaskManager.UI.Controllers
              String.Join("|",   ModelState.Values.SelectMany(v => v.Errors).ToList().Select(e => e.ErrorMessage));
                 return BadRequest(ModelState);
             }
+            bool isEmailExist = await IsEmailAlreadyRegister(registerDTO.Email) ;
+            if(isEmailExist) return Problem("Email is already used");
             var user = new ApplicationUser
             {
                 UserName = registerDTO.Username,
                 Email = registerDTO.Email,
-                PersonName = registerDTO.login,
+                PersonName = registerDTO.PersonName,
                 PhoneNumber = registerDTO.PhoneNumber
             };
             var result = await _userManager.CreateAsync(user, registerDTO.Password);
@@ -56,17 +69,78 @@ namespace TaskManager.UI.Controllers
             }
             return BadRequest(ModelState); 
         }
-        [HttpGet]
-        public async Task<IActionResult> IsEmailAlreadyRegister( string email)
+       
+        private async Task<bool> IsEmailAlreadyRegister( string email)
         {
             var user = await _userManager.FindByEmailAsync(email);
-            if (user != null)
+            return (user != null);
+         
+        }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(LoginDTO loginDTO)
+        {
+            if (!ModelState.IsValid)
             {
-                return Ok(new { isRegistered = true, Message = "Email is already used" });
+                string messageError = string.Join("|",
+                    ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage));
+                return BadRequest(new { Message = messageError });
             }
-            return Ok(new { isRegistered = false });
-        }   
+            // Vérifier si l’utilisateur existe
+            var user = await _userManager.FindByEmailAsync(loginDTO.Email);
+            if (user == null)
+            {
+                _logger.LogWarning("Utilisateur inexistant: {Email}", loginDTO.Email);
+                return Unauthorized(new { Message = "Email ou mot de passe incorrect" });
+            }
 
+            //// Vérifier si l’email est confirmé
+            //if (!user.EmailConfirmed)
+            //{
+            //    return Unauthorized(new { Message = "Email non confirmé" });
+            //}
 
-    }
+            // Tentative de connexion
+            var result = await _signInManager.PasswordSignInAsync(
+                user.UserName, // ⚠️ bien utiliser UserName ici
+                loginDTO.Password,
+                isPersistent: false,
+                lockoutOnFailure: true
+            );
+
+            if (result.Succeeded)
+            {
+                _logger.LogInformation("Connexion réussie pour {Email}", loginDTO.Email);
+
+                return Ok(new
+                {
+                    PersonName = user.PersonName,
+                    Login = user.Email,
+                    PhoneNumber = user.PhoneNumber
+                });
+            }
+
+            if (result.IsLockedOut)
+            {
+                _logger.LogWarning("Compte verrouillé: {Email}", loginDTO.Email);
+                return Unauthorized(new { Message = "Compte verrouillé. Réessayez plus tard." });
+            }
+
+            _logger.LogWarning("Tentative de connexion invalide pour {Email}", loginDTO.Email);
+            return Unauthorized(new { Message = "Email ou mot de passe incorrect" });
+        }
+
+        /// <summary>
+        /// Logout User
+        /// </summary>
+        /// <param name="loginDTO"></param>
+        /// <returns></returns>
+        [HttpGet("logout")]
+        public async Task<IActionResult> Logout ()
+        {
+             await _signInManager.SignOutAsync();
+            return NoContent();
+        }
+
+        }
 }

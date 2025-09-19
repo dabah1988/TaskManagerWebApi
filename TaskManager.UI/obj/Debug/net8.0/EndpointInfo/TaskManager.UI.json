@@ -36,19 +36,41 @@
         }
       }
     },
-    "/api/Account": {
-      "get": {
+    "/api/Account/login": {
+      "post": {
         "tags": [
           "Account"
         ],
-        "parameters": [
-          {
-            "name": "email",
-            "in": "query",
-            "schema": {
-              "type": "string"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDTO"
+              }
             }
           }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Account/logout": {
+      "get": {
+        "tags": [
+          "Account"
         ],
         "responses": {
           "200": {
@@ -279,6 +301,25 @@
   },
   "components": {
     "schemas": {
+      "LoginDTO": {
+        "required": [
+          "email",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "minLength": 1,
+            "type": "string",
+            "format": "email"
+          },
+          "password": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
       "Project": {
         "required": [
           "dateOfStart",
@@ -368,10 +409,15 @@
           "confirmPassword",
           "email",
           "password",
+          "personName",
           "username"
         ],
         "type": "object",
         "properties": {
+          "personName": {
+            "minLength": 1,
+            "type": "string"
+          },
           "username": {
             "minLength": 1,
             "type": "string"
@@ -380,10 +426,6 @@
             "minLength": 1,
             "type": "string",
             "format": "email"
-          },
-          "login": {
-            "type": "string",
-            "nullable": true
           },
           "phoneNumber": {
             "pattern": "^[0-9]*$",

@@ -1,18 +1,28 @@
 [
   {
     "ContainingType": "TaskManager.UI.Controllers.AccountController",
-    "Method": "IsEmailAlreadyRegister",
-    "RelativePath": "api/Account",
-    "HttpMethod": "GET",
+    "Method": "Login",
+    "RelativePath": "api/Account/login",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "email",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "loginDTO",
+        "Type": "TaskManager.Core.DTO.LoginDTO",
+        "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TaskManager.UI.Controllers.AccountController",
+    "Method": "Logout",
+    "RelativePath": "api/Account/logout",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
