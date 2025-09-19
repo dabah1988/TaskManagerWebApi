@@ -23,10 +23,11 @@ namespace TaskManager.Core.Services
         public AuthenticationResponse CreateJwtToken(ApplicationUser user)
         {
            DateTime expiration =  DateTime.UtcNow.AddMinutes( Convert.ToDouble( _configuration["Jwt:Expiration_minutes"]));
+            Guid miJti = Guid.NewGuid();
             Claim[] claims = new Claim[]
             {
                 new Claim(JwtRegisteredClaimNames.Sub ,user.Id.ToString()), //Subject of the token
-              new Claim(JwtRegisteredClaimNames.Jti , new Guid().ToString() ), //Unique identifier for the token
+              new Claim(JwtRegisteredClaimNames.Jti , (miJti).ToString() ), //Unique identifier for the token
               new Claim(JwtRegisteredClaimNames.Iat , DateTime.Now.ToString() ), //DateTime of generation
               new Claim(JwtRegisteredClaimNames.NameId , user.Email ), //Unique name identifier for user
               new Claim(JwtRegisteredClaimNames.Name , user.PersonName ), //name of user
