@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Serilog;
 using TaskManager.Core.Identity;
+using TaskManager.Core.Services;
+using TaskManager.Core.ServicesContract;
 using TaskManager.Infrastructure;
 using TaskManager.Infrastructure.DatabaseContext;
 using TaskManager.UI.Exceptions;
@@ -55,6 +57,7 @@ namespace WebApiTaskManager
                 builder.Services.AddEndpointsApiExplorer();
                 builder.Services.AddSwaggerGen();
                 builder.Services.AddInfrastructure(builder.Configuration);
+                builder.Services.AddTransient<IJwtService, JwtService>();
                 builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
                 {
                     options.Password.RequireNonAlphanumeric = true;

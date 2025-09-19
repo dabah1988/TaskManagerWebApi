@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using TaskManager.Core.DTO;
 using TaskManager.Core.Identity;
+using TaskManager.Core.ServicesContract;
 
 namespace TaskManager.UI.Controllers
 {
@@ -18,7 +19,7 @@ namespace TaskManager.UI.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly RoleManager<ApplicationRole> _roleManager;
         private readonly ILogger<AccountController> _logger;
-
+        private readonly IJwtService _jwtService;   
         /// <summary>
         /// For user registration and login
         /// </summary>
@@ -29,13 +30,15 @@ namespace TaskManager.UI.Controllers
         public AccountController(UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
           RoleManager<ApplicationRole> roleManager,
-          ILogger<AccountController> logger
+          ILogger<AccountController> logger,
+          IJwtService jwtService
           )
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
             _logger = logger;
+            _jwtService = jwtService;   
         }
 
         [HttpPost("register")]
@@ -58,10 +61,11 @@ namespace TaskManager.UI.Controllers
             var result = await _userManager.CreateAsync(user, registerDTO.Password);
             if (result.Succeeded)
             {
+            AuthenticationResponse  authenticationResponse =     _jwtService.CreateJwtToken(user);
                 // Optionally assign a default role to the user
                 // await _userManager.AddToRoleAsync(user, "User");
                 _logger.LogInformation("User created a new account with password.");
-                return Ok(new { Message = "User registered successfully" });
+                return Ok(authenticationResponse);
             }
             foreach (var error in result.Errors)
             {
@@ -94,12 +98,6 @@ namespace TaskManager.UI.Controllers
                 return Unauthorized(new { Message = "Email ou mot de passe incorrect" });
             }
 
-            //// Vérifier si l’email est confirmé
-            //if (!user.EmailConfirmed)
-            //{
-            //    return Unauthorized(new { Message = "Email non confirmé" });
-            //}
-
             // Tentative de connexion
             var result = await _signInManager.PasswordSignInAsync(
                 user.UserName, // ⚠️ bien utiliser UserName ici
@@ -111,13 +109,9 @@ namespace TaskManager.UI.Controllers
             if (result.Succeeded)
             {
                 _logger.LogInformation("Connexion réussie pour {Email}", loginDTO.Email);
+                AuthenticationResponse authenticationResponse = _jwtService.CreateJwtToken(user);
 
-                return Ok(new
-                {
-                    PersonName = user.PersonName,
-                    Login = user.Email,
-                    PhoneNumber = user.PhoneNumber
-                });
+                return Ok(authenticationResponse);
             }
 
             if (result.IsLockedOut)
