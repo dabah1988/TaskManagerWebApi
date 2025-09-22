@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using TaskManager.Core.DTO;
@@ -31,6 +32,7 @@ namespace TaskManager.Core.Services
               new Claim(JwtRegisteredClaimNames.Iat , DateTime.Now.ToString() ), //DateTime of generation
               new Claim(JwtRegisteredClaimNames.NameId , user.Email ), //Unique name identifier for user
               new Claim(JwtRegisteredClaimNames.Name , user.PersonName ), //name of user
+              new Claim(JwtRegisteredClaimNames.Email , user.Email ), //name of user
             };
 
             SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
@@ -46,11 +48,46 @@ namespace TaskManager.Core.Services
          string token =   tokenHandler.WriteToken(tokenGenerator);
 
 
-            return new AuthenticationResponse() { Token = token, 
-                ExpirationTime = expiration, 
-                Email = user.Email, 
-                PersonName = user.PersonName ?? string.Empty  
+            return new AuthenticationResponse()
+            {
+                Token = token,
+                ExpirationTime = expiration,
+                Email = user.Email,
+                PersonName = user.PersonName ?? string.Empty,
+                RefreshToken = GenerateRefreshToken(),
+                RefreshTokenExpirationDatetime = 
+                DateTime.UtcNow.AddMinutes( Convert.ToDouble(_configuration["refreshToken:Expiration_minutes"])) // Refresh token valid for 7 days
             };
         }
+
+        public ClaimsPrincipal? GetPrincipalFromJwtToken(string? token)
+        {
+            var tokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = false,
+                ValidateIssuerSigningKey = true,
+                ValidIssuer = _configuration["Jwt:Issuer"],
+                ValidAudience = _configuration["Jwt:Audience"],
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"])),
+            };
+            JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
+        ClaimsPrincipal principals =    tokenHandler.ValidateToken(token, tokenValidationParameters, out SecurityToken securityToken);
+            if(securityToken is not JwtSecurityToken jwtSecurityToken || !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
+            { 
+                throw new SecurityTokenException("Invalid token");
+            }
+            return principals;
+        }
+
+        private string GenerateRefreshToken()
+        {
+            byte[]  bytes = new byte[64];
+            var randonNumber = RandomNumberGenerator.Create();   
+            randonNumber.GetBytes(bytes);
+            return Convert.ToBase64String(bytes);
+        }
+
     }
 }

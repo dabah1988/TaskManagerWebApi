@@ -1,6 +1,22 @@
 [
   {
     "ContainingType": "TaskManager.UI.Controllers.AccountController",
+    "Method": "GenerateAccessToken",
+    "RelativePath": "api/Account/generate-new-jwt-token",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tokenModel",
+        "Type": "TaskManager.Core.DTO.TokenModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TaskManager.UI.Controllers.AccountController",
     "Method": "Login",
     "RelativePath": "api/Account/login",
     "HttpMethod": "POST",

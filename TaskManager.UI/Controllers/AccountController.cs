@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using TaskManager.Core.DTO;
 using TaskManager.Core.Identity;
 using TaskManager.Core.ServicesContract;
@@ -13,13 +14,13 @@ namespace TaskManager.UI.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [AllowAnonymous]
-    public class AccountController:ControllerBase
+    public class AccountController : ControllerBase
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly RoleManager<ApplicationRole> _roleManager;
         private readonly ILogger<AccountController> _logger;
-        private readonly IJwtService _jwtService;   
+        private readonly IJwtService _jwtService;
         /// <summary>
         /// For user registration and login
         /// </summary>
@@ -38,7 +39,7 @@ namespace TaskManager.UI.Controllers
             _signInManager = signInManager;
             _roleManager = roleManager;
             _logger = logger;
-            _jwtService = jwtService;   
+            _jwtService = jwtService;
         }
 
         [HttpPost("register")]
@@ -46,11 +47,11 @@ namespace TaskManager.UI.Controllers
         {
             if (!ModelState.IsValid)
             {
-             String.Join("|",   ModelState.Values.SelectMany(v => v.Errors).ToList().Select(e => e.ErrorMessage));
+                String.Join("|", ModelState.Values.SelectMany(v => v.Errors).ToList().Select(e => e.ErrorMessage));
                 return BadRequest(ModelState);
             }
-            bool isEmailExist = await IsEmailAlreadyRegister(registerDTO.Email) ;
-            if(isEmailExist) return Problem("Email is already used");
+            bool isEmailExist = await IsEmailAlreadyRegister(registerDTO.Email);
+            if (isEmailExist) return Problem("Email is already used");
             var user = new ApplicationUser
             {
                 UserName = registerDTO.Username,
@@ -61,7 +62,10 @@ namespace TaskManager.UI.Controllers
             var result = await _userManager.CreateAsync(user, registerDTO.Password);
             if (result.Succeeded)
             {
-            AuthenticationResponse  authenticationResponse =     _jwtService.CreateJwtToken(user);
+                AuthenticationResponse authenticationResponse = _jwtService.CreateJwtToken(user);
+                user.RefreshToken = authenticationResponse.RefreshToken;
+                user.RefreshTokenExpirationDatetime = authenticationResponse.RefreshTokenExpirationDatetime;
+                await _userManager.UpdateAsync(user);
                 // Optionally assign a default role to the user
                 // await _userManager.AddToRoleAsync(user, "User");
                 _logger.LogInformation("User created a new account with password.");
@@ -71,18 +75,18 @@ namespace TaskManager.UI.Controllers
             {
                 ModelState.AddModelError(string.Empty, error.Description);
             }
-            return BadRequest(ModelState); 
+            return BadRequest(ModelState);
         }
-       
-        private async Task<bool> IsEmailAlreadyRegister( string email)
+
+        private async Task<bool> IsEmailAlreadyRegister(string email)
         {
             var user = await _userManager.FindByEmailAsync(email);
             return (user != null);
-         
+
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login(LoginDTO loginDTO)
+        public async Task<IActionResult> Login([FromBody] LoginDTO loginDTO)
         {
             if (!ModelState.IsValid)
             {
@@ -110,7 +114,9 @@ namespace TaskManager.UI.Controllers
             {
                 _logger.LogInformation("Connexion réussie pour {Email}", loginDTO.Email);
                 AuthenticationResponse authenticationResponse = _jwtService.CreateJwtToken(user);
-
+                user.RefreshToken = authenticationResponse.RefreshToken;
+                user.RefreshTokenExpirationDatetime = authenticationResponse.RefreshTokenExpirationDatetime;
+                await _userManager.UpdateAsync(user);
                 return Ok(authenticationResponse);
             }
 
@@ -130,11 +136,32 @@ namespace TaskManager.UI.Controllers
         /// <param name="loginDTO"></param>
         /// <returns></returns>
         [HttpGet("logout")]
-        public async Task<IActionResult> Logout ()
+        public async Task<IActionResult> Logout()
         {
-             await _signInManager.SignOutAsync();
+            await _signInManager.SignOutAsync();
             return NoContent();
         }
-
+        [HttpPost("generate-new-jwt-token")]
+        public async Task<IActionResult> GenerateAccessToken(TokenModel tokenModel)
+        {
+             if(tokenModel==null || string.IsNullOrEmpty(tokenModel.Token) || string.IsNullOrEmpty(tokenModel.RefreshToken))
+            {
+           return BadRequest("Invalid client request");
+            }
+             string jwtToken = tokenModel.Token;
+           ClaimsPrincipal?  principals =   _jwtService.GetPrincipalFromJwtToken(jwtToken);
+            if(principals is null ) return BadRequest("Invalid Jwt acess Token");
+            string userEmail = principals.FindFirstValue(ClaimTypes.Email)?? string.Empty; 
+            ApplicationUser? user = await _userManager.FindByEmailAsync(userEmail);
+            if(user is null || user.RefreshToken != tokenModel.RefreshToken || user.RefreshTokenExpirationDatetime <= DateTime.UtcNow)
+            {
+                return BadRequest("Invalid refresh token");
+            }
+         AuthenticationResponse authenticationResponse =    _jwtService.CreateJwtToken(user);
+            user.RefreshToken = authenticationResponse.RefreshToken;
+            user.RefreshTokenExpirationDatetime = authenticationResponse.RefreshTokenExpirationDatetime;
+            await _userManager.UpdateAsync(user);
+            return Ok(authenticationResponse);
         }
+    }
 }
