@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -12,6 +13,7 @@ namespace WebApiTaskManager.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class TaskManagerController : ControllerBase
     {
         private readonly ITaskManagerService _serviceTaskManager;
@@ -35,6 +37,7 @@ namespace WebApiTaskManager.Controllers
         }
 
         [HttpGet]
+        [Authorize( Roles ="Admin")]
         public async Task<ActionResult<List<ProjectResponse>>> GetProjects( [FromQuery] int pageNumber = 1, [FromQuery] int? pageSize = null )
         {             
                 var pageSizeTemp = pageSize.GetValueOrDefault(_paginationSettings.NumberElementsByPage);

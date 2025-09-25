@@ -1,6 +1,10 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Serilog;
+using System.Security.Claims;
+using System.Text;
 using TaskManager.Core.Identity;
 using TaskManager.Core.Services;
 using TaskManager.Core.ServicesContract;
@@ -14,7 +18,7 @@ namespace WebApiTaskManager
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
 
             try
@@ -71,22 +75,49 @@ namespace WebApiTaskManager
                 .AddUserStore<UserStore<ApplicationUser, ApplicationRole, ApplicationDbContext, Guid>>()
                 .AddRoleStore<RoleStore<ApplicationRole, ApplicationDbContext, Guid>>();
 
+                builder.Services.AddAuthentication(options =>
+                {
+                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                })
+            .AddJwtBearer(options =>
+          {
+           options.TokenValidationParameters = new TokenValidationParameters
+        {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+
+        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+        ValidAudience = builder.Configuration["Jwt:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(
+            Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
+        // ⚡ Important pour que [Authorize(Roles="Admin")] marche
+        RoleClaimType = ClaimTypes.Role
+    };
+});
 
 
                 var app = builder.Build();
+                using (var scope = app.Services.CreateScope())
+                {
+                    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
+                    await SeedRoles.InitializeAsync(roleManager);
+                }
+
                 app.UseMiddleware<ErrorHandlingMiddleware>();
 
                 //Configure the HTTP request pipeline.
                 if (!builder.Environment.ApplicationName.Contains("ef"))
                 {
-                    app.UseMiddleware<ErrorHandlingMiddleware>();
 
                     if (app.Environment.IsDevelopment())
                     {
                         app.UseSwagger();
                         app.UseSwaggerUI();
                     }
-
+                    app.UseHsts(); // Forcer HTTPS strict en prod
                     app.UseHttpsRedirection();
                     app.UseStaticFiles();
                     app.UseRouting();

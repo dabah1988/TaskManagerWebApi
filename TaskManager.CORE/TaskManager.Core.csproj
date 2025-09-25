@@ -17,4 +17,8 @@
     <PackageReference Include="SerilogTimings" Version="3.1.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Utilitaire\Utilitaire.csproj" />
+  </ItemGroup>
+
 </Project>

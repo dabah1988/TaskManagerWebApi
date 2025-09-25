@@ -12,8 +12,8 @@ using TaskManager.Infrastructure.DatabaseContext;
 namespace TaskManager.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250920192252_migrationRefreshToken")]
-    partial class migrationRefreshToken
+    [Migration("20250925211546_AddIsAdminToUsers2")]
+    partial class AddIsAdminToUsers2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -187,6 +187,9 @@ namespace TaskManager.Infrastructure.Migrations
 
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsAdmin")
+                        .HasColumnType("bit");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");

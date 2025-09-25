@@ -167,22 +167,22 @@ namespace TaskManagerTests
             List<Project> projects = new List<Project>() { project1,project2,project3,project4};
 
             _taskManagerRepositoryMock.
-                Setup(p => p.SearchProjectsAsync(pageNumber,pageSize,CriteriaOfSearch.ProjectName, "doublure "))
+                Setup(p => p.SearchProjectsAsync(pageNumber,pageSize,ConstantValues.ProjectName, "doublure "))
                 .ReturnsAsync(new List<Project>() { project1});
 
             _taskManagerRepositoryMock.
-             Setup(p => p.SearchProjectsAsync(pageNumber, pageSize, CriteriaOfSearch.projectDescription, "livre"))
+             Setup(p => p.SearchProjectsAsync(pageNumber, pageSize, ConstantValues.projectDescription, "livre"))
              .ReturnsAsync(projects);
 
             List<Project> projectNameDoublure =
-       await _taskManagerService.SearchProjectsAsync(pageNumber, pageSize, CriteriaOfSearch.ProjectName, "doublure");
+       await _taskManagerService.SearchProjectsAsync(pageNumber, pageSize, ConstantValues.ProjectName, "doublure");
           foreach(var myProject  in projectNameDoublure)
             {
                 Assert.True(myProject.ProjectName == project1.ProjectName);
             }
 
             List<Project> projectDescriptionForLivres =
-                await _taskManagerService.SearchProjectsAsync(pageNumber, pageSize, CriteriaOfSearch.projectDescription, "livre");
+                await _taskManagerService.SearchProjectsAsync(pageNumber, pageSize, ConstantValues.projectDescription, "livre");
             Assert.True(projectDescriptionForLivres.Count == projects.Count);
 
         }

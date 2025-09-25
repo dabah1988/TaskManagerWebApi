@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using TaskManager.Core.DTO;
 using TaskManager.Core.Identity;
 using TaskManager.Core.ServicesContract;
+using Utilitaire;
 
 namespace TaskManager.UI.Controllers
 {
@@ -62,12 +64,32 @@ namespace TaskManager.UI.Controllers
             var result = await _userManager.CreateAsync(user, registerDTO.Password);
             if (result.Succeeded)
             {
-                AuthenticationResponse authenticationResponse = _jwtService.CreateJwtToken(user);
+                string roleName = string.Empty;
+                if (user.Email == ConstantValues.emailAdmin)
+                {
+                    roleName = "Admin";
+                    user.IsAdmin = true;
+                }
+                else
+                {
+                    roleName = "User";
+                    user.IsAdmin = false;
+                }
+                await CreateRoleAsync(_roleManager, roleName);
+
+                // 📌 Affecte le rôle à l’utilisateur
+                await _userManager.AddToRoleAsync(user, roleName);
+
+          
+
+                AuthenticationResponse authenticationResponse = _jwtService.CreateJwtToken(user );
                 user.RefreshToken = authenticationResponse.RefreshToken;
                 user.RefreshTokenExpirationDatetime = authenticationResponse.RefreshTokenExpirationDatetime;
                 await _userManager.UpdateAsync(user);
-                // Optionally assign a default role to the user
-                // await _userManager.AddToRoleAsync(user, "User");
+
+                // 📌 Vérifie/crée le rôle avant de l’assigner
+              
+
                 _logger.LogInformation("User created a new account with password.");
                 return Ok(authenticationResponse);
             }
@@ -114,6 +136,8 @@ namespace TaskManager.UI.Controllers
             {
                 _logger.LogInformation("Connexion réussie pour {Email}", loginDTO.Email);
                 AuthenticationResponse authenticationResponse = _jwtService.CreateJwtToken(user);
+             
+               
                 user.RefreshToken = authenticationResponse.RefreshToken;
                 user.RefreshTokenExpirationDatetime = authenticationResponse.RefreshTokenExpirationDatetime;
                 await _userManager.UpdateAsync(user);
@@ -163,5 +187,27 @@ namespace TaskManager.UI.Controllers
             await _userManager.UpdateAsync(user);
             return Ok(authenticationResponse);
         }
+
+        private async Task<ApplicationRole?> CreateRoleAsync(RoleManager<ApplicationRole> roleManager, string roleName)
+        {
+            // Vérifie si le rôle existe déjà
+            var role = await roleManager.FindByNameAsync(roleName);
+
+            if (role == null)
+            {
+                role = new ApplicationRole { Name = roleName };
+                var result = await roleManager.CreateAsync(role);
+
+                if (!result.Succeeded)
+                {
+                    // Gérer les erreurs si besoin
+                    throw new Exception($"Échec lors de la création du rôle {roleName}: {string.Join(", ", result.Errors.Select(e => e.Description))}");
+                }
+            }
+
+            return role;
+        }
+
+
     }
 }

@@ -161,17 +161,17 @@ namespace TaskManager.Infrastructure.Repository
             var query = _dbContext.Projects!.AsQueryable();
             switch (searchBy)
             {
-                case CriteriaOfSearch.ProjectName:
+                case ConstantValues.ProjectName:
                     query = query.Where(p => p.ProjectName.Contains(searchText));
                     break;
-                case CriteriaOfSearch.DateOfStart :
+                case ConstantValues.DateOfStart :
                     if (DateTime.TryParse(searchText, out var date))
                         query = query.Where(p => p.DateOfStart == date);
                     break;
-                case CriteriaOfSearch.projectDescription :
+                case ConstantValues.projectDescription :
                     query = query.Where(p => p.ProjectDescription.Contains(searchText));
                     break;
-                case CriteriaOfSearch.teamSize:
+                case ConstantValues.teamSize:
                     if (int.TryParse(searchText, out var size))
                         query = query.Where(p => p.TeamSize == size);
                     break;

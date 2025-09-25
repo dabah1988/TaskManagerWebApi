@@ -36,3 +36,6 @@ D:\COURS\ANGULAR\TaskManager\TaskManagerWebApi\TaskManager.CORE\obj\Debug\net8.0
 D:\COURS\ANGULAR\TaskManager\TaskManagerWebApi\TaskManager.CORE\obj\Debug\net8.0\refint\TaskManager.Core.dll
 D:\COURS\ANGULAR\TaskManager\TaskManagerWebApi\TaskManager.CORE\obj\Debug\net8.0\TaskManager.Core.pdb
 D:\COURS\ANGULAR\TaskManager\TaskManagerWebApi\TaskManager.CORE\obj\Debug\net8.0\ref\TaskManager.Core.dll
+D:\COURS\ANGULAR\TaskManager\TaskManagerWebApi\TaskManager.CORE\bin\Debug\net8.0\Utilitaire.dll
+D:\COURS\ANGULAR\TaskManager\TaskManagerWebApi\TaskManager.CORE\bin\Debug\net8.0\Utilitaire.pdb
+D:\COURS\ANGULAR\TaskManager\TaskManagerWebApi\TaskManager.CORE\obj\Debug\net8.0\TaskMana.7E897A24.Up2Date

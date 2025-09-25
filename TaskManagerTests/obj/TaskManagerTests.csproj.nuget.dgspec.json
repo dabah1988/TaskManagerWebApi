@@ -32,7 +32,11 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\COURS\\ANGULAR\\TaskManager\\TaskManagerWebApi\\Utilitaire\\Utilitaire.csproj": {
+                "projectPath": "D:\\COURS\\ANGULAR\\TaskManager\\TaskManagerWebApi\\Utilitaire\\Utilitaire.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

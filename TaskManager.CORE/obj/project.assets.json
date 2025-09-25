@@ -1869,6 +1869,16 @@
         "runtime": {
           "lib/netcoreapp2.1/_._": {}
         }
+      },
+      "Utilitaire/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Utilitaire.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Utilitaire.dll": {}
+        }
       }
     }
   },
@@ -5359,6 +5369,11 @@
         "system.threading.tasks.extensions.4.6.0.nupkg.sha512",
         "system.threading.tasks.extensions.nuspec"
       ]
+    },
+    "Utilitaire/1.0.0": {
+      "type": "project",
+      "path": "../Utilitaire/Utilitaire.csproj",
+      "msbuildProject": "../Utilitaire/Utilitaire.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -5370,7 +5385,8 @@
       "Microsoft.AspNetCore.Mvc.ViewFeatures >= 2.3.0",
       "Serilog >= 4.3.0",
       "Serilog.Extensions.Hosting >= 9.0.0",
-      "SerilogTimings >= 3.1.0"
+      "SerilogTimings >= 3.1.0",
+      "Utilitaire >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -5406,7 +5422,11 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\COURS\\ANGULAR\\TaskManager\\TaskManagerWebApi\\Utilitaire\\Utilitaire.csproj": {
+              "projectPath": "D:\\COURS\\ANGULAR\\TaskManager\\TaskManagerWebApi\\Utilitaire\\Utilitaire.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

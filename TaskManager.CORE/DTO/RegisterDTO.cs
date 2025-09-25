@@ -30,5 +30,7 @@ namespace TaskManager.Core.DTO
         [Required(ErrorMessage = "Confirm Password is required")]
         [Compare("Password", ErrorMessage = "Passwords do not match")]
         public string? ConfirmPassword { get; set; }
-    }
+
+        public bool IsAdmin { get; set; } =false;
+        }
 }

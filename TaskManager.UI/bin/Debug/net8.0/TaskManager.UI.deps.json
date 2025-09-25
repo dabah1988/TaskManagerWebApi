@@ -1507,7 +1507,8 @@
           "Microsoft.AspNetCore.Mvc.ViewFeatures": "2.3.0",
           "Serilog": "4.3.0",
           "Serilog.Extensions.Hosting": "9.0.0",
-          "SerilogTimings": "3.1.0"
+          "SerilogTimings": "3.1.0",
+          "Utilitaire": "1.0.0"
         },
         "runtime": {
           "TaskManager.Core.dll": {

@@ -12,7 +12,6 @@ namespace TaskManager.Core.Identity
         [MaxLength(5000)]
         public string? RefreshToken { get; set; }
         public DateTime RefreshTokenExpirationDatetime { get; set; }
-
-
+        public bool IsAdmin { get; set; } = true;
     }
 }
